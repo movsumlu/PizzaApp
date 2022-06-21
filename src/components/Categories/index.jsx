@@ -8,11 +8,9 @@ const categories = [
     name: "Мясные",
   },
   {
-    name: "Вегетарианская",
+    name: "Вегетарианские",
   },
-  {
-    name: "Гриль",
-  },
+
   {
     name: "Острые",
   },
@@ -26,7 +24,9 @@ const Categories = () => {
     <div className="categories">
       <ul>
         {categories.map(({ name }) => (
-          <li key={name}>{name}</li>
+          <li className={name === "Все" ? "active" : ""} key={name}>
+            {name}
+          </li>
         ))}
       </ul>
     </div>

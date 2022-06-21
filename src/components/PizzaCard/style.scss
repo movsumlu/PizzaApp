@@ -1,0 +1,121 @@
+@import "../../style/variables.scss";
+
+.pizza-card {
+  width: 280px;
+  text-align: center;
+  margin-bottom: 65px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 260px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  &__select {
+    display: flex;
+    background-color: $concrete-color;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 6px;
+
+    ul {
+      display: flex;
+      flex: 1;
+
+      &:first-of-type {
+        margin-bottom: 6px;
+      }
+
+      li {
+        padding: 8px;
+        flex: 1;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+
+        &.active {
+          background: $white-color;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+          border-radius: 5px;
+          cursor: auto;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .button {
+      display: inline-block;
+      background-color: $orange-color;
+      border-radius: 30px;
+      padding: 10px 20px;
+      min-width: 100px;
+      text-align: center;
+      transition: background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .button--add {
+      background-color: $white-color;
+      border-color: $orange-color;
+
+      svg {
+        margin-right: 2px;
+
+        path {
+          fill: $orange-color;
+        }
+      }
+
+      span {
+        color: $orange-color;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      &:hover {
+        background-color: $orange-color;
+
+        &,
+        span {
+          color: $white-color;
+        }
+
+        svg {
+          path {
+            fill: $white-color;
+          }
+        }
+      }
+    }
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.015em;
+  }
+}
