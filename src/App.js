@@ -1,5 +1,6 @@
 import { Categories } from "./components/Categories";
 import { Header } from "./components/Header";
+import { Sorting } from "./components/Sorting";
 
 const App = () => {
   return (
@@ -8,7 +9,10 @@ const App = () => {
         <Header />
 
         <div className="content">
-          <Categories />
+          <div className="content__top">
+            <Categories />
+            <Sorting />
+          </div>
         </div>
       </div>
     </div>

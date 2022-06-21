@@ -1,19 +1,31 @@
 import "./style.scss";
 
 const categories = [
-  "Все",
-  "Мясные",
-  "Вегетарианская",
-  "Гриль",
-  "Острые",
-  "Закрытые",
+  {
+    name: "Все",
+  },
+  {
+    name: "Мясные",
+  },
+  {
+    name: "Вегетарианская",
+  },
+  {
+    name: "Гриль",
+  },
+  {
+    name: "Острые",
+  },
+  {
+    name: "Закрытые",
+  },
 ];
 
 const Categories = () => {
   return (
     <div className="categories">
       <ul>
-        {categories.map((name) => (
+        {categories.map(({ name }) => (
           <li key={name}>{name}</li>
         ))}
       </ul>
