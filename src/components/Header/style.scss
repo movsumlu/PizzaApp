@@ -1,0 +1,63 @@
+@import "../../style/variables.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $culturedPearl-color;
+  padding: 40px 0;
+
+  &__leftside {
+    display: flex;
+  }
+
+  &__logo {
+    margin-right: 15px;
+  }
+
+  &__title {
+    color: $eerieBlack-color;
+    font-size: 25px;
+    letter-spacing: 1%;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  &__subtitle {
+    color: $boulder-color;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    align-items: center;
+    line-height: 23px;
+    padding: 12px 25px;
+    background-color: $orange-color;
+    border-radius: 30px;
+    cursor: pointer;
+
+    .delimiter {
+      width: 1px;
+      height: 25px;
+      background-color: rgba(255, 255, 255, 0.25);
+      margin: 0 15px;
+    }
+
+    svg {
+      margin: 0 8px 1px 0;
+    }
+
+    span {
+      font-size: 16px;
+      color: $white-color;
+    }
+  }
+
+  @media (max-width: 645px) {
+    flex-direction: column;
+
+    .header__rightside {
+      margin-top: 20px;
+    }
+  }
+}

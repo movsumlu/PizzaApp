@@ -1,0 +1,29 @@
+@import "normalize.css";
+@import "./variables.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  font-family: "Nunito", Roboto, system-ui, Tahoma, sans-serif;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  background-color: $salomie-color;
+
+  .app {
+    max-width: 1200px;
+    padding-top: 20px;
+    margin: 0 auto;
+  }
+}
