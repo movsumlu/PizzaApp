@@ -1,0 +1,30 @@
+@import "../../style/variables.scss";
+
+.categories {
+  ul {
+    display: flex;
+
+    li {
+      background-color: $alabaster-color;
+      padding: 15px 30px;
+      border-radius: 30px;
+      margin-right: 10px;
+      font-weight: bold;
+      transition: background-color 0.1s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken($alabaster-color, 2%);
+      }
+
+      &:active {
+        background-color: darken($alabaster-color, 5%);
+      }
+
+      &.active {
+        background-color: $mineShaft-color;
+        color: $white-color;
+      }
+    }
+  }
+}

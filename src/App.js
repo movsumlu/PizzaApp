@@ -1,9 +1,16 @@
+import { Categories } from "./components/Categories";
 import { Header } from "./components/Header";
 
 const App = () => {
   return (
     <div className="app">
-      <Header />
+      <div className="wrapper">
+        <Header />
+
+        <div className="content">
+          <Categories />
+        </div>
+      </div>
     </div>
   );
 };

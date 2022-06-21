@@ -25,5 +25,18 @@ body {
     max-width: 1200px;
     padding-top: 20px;
     margin: 0 auto;
+
+    .wrapper {
+      width: calc(100vw - 100px);
+      height: 100%;
+      background-color: $white-color;
+      margin: 50px auto;
+      border-radius: 10px;
+      max-width: 1400px;
+
+      .content {
+        padding: 40px;
+      }
+    }
   }
 }

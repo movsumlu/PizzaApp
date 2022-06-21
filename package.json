@@ -2,7 +2,9 @@
   "name": "pizza-app",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://movsumlu.github.io/PizzaApp/",
   "dependencies": {
+    "gh-pages": "^4.0.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -10,7 +12,9 @@
     "sass": "^1.52.3"
   },
   "scripts": {
-    "dev": "react-scripts start"
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
