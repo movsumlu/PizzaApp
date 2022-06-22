@@ -1,8 +1,10 @@
+import { useState } from "react";
+
 import "./style.scss";
 
 const typesOfSorting = [
-  { name: "популярности ↑" },
   { name: "популярности ↓" },
+  { name: "популярности ↑" },
   { name: "цена по возростанию" },
   { name: "цене по убыванию" },
   { name: "алфавиту от А до Я" },
@@ -10,18 +12,32 @@ const typesOfSorting = [
 ];
 
 const Sorting = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const [selectedTypeOfSorting, setSelectedTypeOfSorting] =
+    useState("популярности ↓");
+
+  const onSelectTypeOfSorting = (event) => {
+    setSelectedTypeOfSorting(event.target.innerText);
+    setShowPopup(false);
+  };
+
   return (
     <div className="sorting">
       <div className="sorting__label">
         <b>Сортировка по:</b>
-        <span>популярности ↓</span>
+        <span onClick={() => setShowPopup(!showPopup)}>
+          {selectedTypeOfSorting}
+        </span>
       </div>
 
-      {false && (
+      {showPopup && (
         <div className="sorting__popup">
           <ul>
             {typesOfSorting.map(({ name }) => (
-              <li key={name}>{name}</li>
+              <li onClick={onSelectTypeOfSorting} key={name}>
+                {name}
+              </li>
             ))}
           </ul>
         </div>

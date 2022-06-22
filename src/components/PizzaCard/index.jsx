@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "./style.scss";
 
 const typesOfDough = [
@@ -7,6 +9,9 @@ const typesOfDough = [
 ];
 
 const PizzaCard = ({ pizza }) => {
+  const [selectedDough, setSelectedDough] = useState("тонкое");
+  const [selectedSize, setSelectedSize] = useState(pizza.sizes[0]);
+
   return (
     <div className="pizza-card-wrapper">
       <div className="pizza-card">
@@ -19,16 +24,28 @@ const PizzaCard = ({ pizza }) => {
 
         <div className="pizza-card__select">
           <ul>
-            {typesOfDough.map(({ name }, index) => (
-              <li className={index === 0 ? "active" : ""} key={index}>
+            {typesOfDough.map(({ name }) => (
+              <li
+                className={name === selectedDough ? "active" : ""}
+                key={name}
+                onClick={(event) => {
+                  setSelectedDough(event.target.innerText);
+                }}
+              >
                 {name}
               </li>
             ))}
           </ul>
           <ul>
-            {pizza.sizes.map((sizes, index) => (
-              <li className={index === 0 ? "active" : ""} key={index}>
-                {sizes}
+            {pizza.sizes.map((size) => (
+              <li
+                className={size === selectedSize ? "active" : ""}
+                key={size}
+                onClick={(event) => {
+                  setSelectedSize(parseInt(event.target.innerText));
+                }}
+              >
+                {size}
               </li>
             ))}
           </ul>

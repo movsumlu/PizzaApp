@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "./style.scss";
 
 const categories = [
@@ -20,11 +22,19 @@ const categories = [
 ];
 
 const Categories = () => {
+  const [selectedCategory, setSelectedCategory] = useState("Все");
+
   return (
     <div className="categories">
       <ul>
         {categories.map(({ name }) => (
-          <li className={name === "Все" ? "active" : ""} key={name}>
+          <li
+            className={name === selectedCategory ? "active" : ""}
+            key={name}
+            onClick={(event) => {
+              setSelectedCategory(event.target.innerText);
+            }}
+          >
             {name}
           </li>
         ))}
