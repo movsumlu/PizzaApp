@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import { Categories } from "./components/Categories";
 import { Header } from "./components/Header";
 import { PizzaCard } from "./components/PizzaCard";
+import { PizzaCardSkeleton } from "./components/PizzaCardSkeleton";
 import { Sorting } from "./components/Sorting";
 
 const App = () => {
   const [pizzas, setPizzas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -16,6 +18,7 @@ const App = () => {
       .then((response) => {
         const pizzas = response.data;
         setPizzas(pizzas);
+        setIsLoading(false);
       });
   }, []);
 
@@ -33,9 +36,13 @@ const App = () => {
           <h2 className="content__title">Все пиццы</h2>
 
           <div className="content__items">
-            {pizzas.map((pizza) => {
-              return <PizzaCard pizza={pizza} key={pizza.id} />;
-            })}
+            {isLoading
+              ? [...new Array(12)].map((_, index) => (
+                  <PizzaCardSkeleton key={index} />
+                ))
+              : pizzas.map((pizza) => (
+                  <PizzaCard pizza={pizza} key={pizza.id} />
+                ))}
           </div>
         </div>
       </div>
