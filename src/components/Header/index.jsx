@@ -13,7 +13,7 @@ const Header = () => {
         />
         <div>
           <h1 className="header__title">Pizza App</h1>
-          <p className="header__subtitle">самая вкусная пицца во вселенной</p>
+          <p className="header__subtitle">доставка пиццы по городу</p>
         </div>
       </div>
       <div className="header__rightside">

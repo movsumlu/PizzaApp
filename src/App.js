@@ -1,9 +1,24 @@
+import axios from "axios";
+
+import { useState, useEffect } from "react";
+
 import { Categories } from "./components/Categories";
 import { Header } from "./components/Header";
 import { PizzaCard } from "./components/PizzaCard";
 import { Sorting } from "./components/Sorting";
 
 const App = () => {
+  const [pizzas, setPizzas] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://62b2b163c7e53744afd01e9f.mockapi.io/pizzas`)
+      .then((response) => {
+        const pizzas = response.data;
+        setPizzas(pizzas);
+      });
+  }, []);
+
   return (
     <div className="app">
       <div className="wrapper">
@@ -18,7 +33,9 @@ const App = () => {
           <h2 className="content__title">Все пиццы</h2>
 
           <div className="content__items">
-            <PizzaCard />
+            {pizzas.map((pizza) => {
+              return <PizzaCard pizza={pizza} key={pizza.id} />;
+            })}
           </div>
         </div>
       </div>

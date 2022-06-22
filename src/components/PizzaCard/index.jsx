@@ -6,37 +6,35 @@ const typesOfDough = [
   { name: "толстое" },
 ];
 
-const sizes = [{ name: "22 см." }, { name: "30 см." }, { name: "40 см." }];
-
-const PizzaCard = () => {
+const PizzaCard = ({ pizza }) => {
   return (
     <div className="pizza-card-wrapper">
       <div className="pizza-card">
         <img
           className="pizza-card__image"
-          src="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/6652fec1-04df-49d8-8744-232f1032c44b.jpg"
+          src={pizza.imageUrl}
           alt="pizzaImage"
         />
-        <h4 className="pizza-card__title">Цыпленок барбекю</h4>
+        <h4 className="pizza-card__title">{pizza.title}</h4>
 
         <div className="pizza-card__select">
           <ul>
-            {typesOfDough.map(({ name }) => (
-              <li className={name === "тонкое" ? "active" : ""} key={name}>
+            {typesOfDough.map(({ name }, index) => (
+              <li className={index === 0 ? "active" : ""} key={index}>
                 {name}
               </li>
             ))}
           </ul>
           <ul>
-            {sizes.map(({ name }) => (
-              <li className={name === "22 см." ? "active" : ""} key={name}>
-                {name}
+            {pizza.sizes.map((sizes, index) => (
+              <li className={index === 0 ? "active" : ""} key={index}>
+                {sizes}
               </li>
             ))}
           </ul>
         </div>
         <div className="pizza-card__bottom">
-          <div className="pizza-card__price">от 275 ₽</div>
+          <div className="pizza-card__price">от {pizza.price} ₽</div>
           <button className="button  button--add">
             <svg
               width="12"
