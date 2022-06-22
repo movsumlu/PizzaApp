@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import { Categories } from "../../components/Categories";
 import { PizzaCard } from "../../components/PizzaCard";
+import { PizzaCardModal } from "../../components/PizzaCardModal";
 import { PizzaCardSkeleton } from "../../components/PizzaCardSkeleton";
 import { Sorting } from "../../components/Sorting";
 
@@ -12,6 +13,15 @@ import s from "./style.module.scss";
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalActive, setIsModalActive] = useState(false);
+
+  const pizzasCards = pizzas.map((pizza) => (
+    <PizzaCard pizza={pizza} key={pizza.id} />
+  ));
+
+  const pizzasCardsSkeletons = [...new Array(12)].map((_, index) => (
+    <PizzaCardSkeleton key={index} />
+  ));
 
   useEffect(() => {
     axios
@@ -36,12 +46,10 @@ const Home = () => {
       <h2 className={s.cardWrapper__title}>Все пиццы</h2>
 
       <div className={s.cardWrapper__items}>
-        {isLoading
-          ? [...new Array(12)].map((_, index) => (
-              <PizzaCardSkeleton key={index} />
-            ))
-          : pizzas.map((pizza) => <PizzaCard pizza={pizza} key={pizza.id} />)}
+        {isLoading ? pizzasCardsSkeletons : pizzasCards}
       </div>
+
+      <PizzaCardModal active={isModalActive} setActive={setIsModalActive} />
     </div>
   );
 };

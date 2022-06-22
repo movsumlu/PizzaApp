@@ -1,11 +1,7 @@
 import { useState } from "react";
 import s from "./style.module.scss";
 
-const typesOfDough = [
-  { name: "тонкое" },
-  { name: "традиционное" },
-  { name: "толстое" },
-];
+const typesOfDough = [{ name: "тонкое" }, { name: "традиционное" }];
 
 const PizzaCard = ({ pizza }) => {
   const [selectedDough, setSelectedDough] = useState("тонкое");

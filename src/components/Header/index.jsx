@@ -16,7 +16,7 @@ const Header = () => {
           />
           <div>
             <h1 className={s.header__title}>Pizza App</h1>
-            <p className={s.header__subtitle}>доставка пиццы по городу</p>
+            <p className={s.header__subtitle}>доставка пиццы 24/7</p>
           </div>
         </div>
       </Link>
