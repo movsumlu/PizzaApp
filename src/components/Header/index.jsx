@@ -1,25 +1,25 @@
 import pizzaLogo from "../../assets/images/pizza-logo.svg";
-import "./style.scss";
+import s from "./style.module.scss";
 
 const Header = () => {
   return (
-    <div className="header">
-      <div className="header__leftside">
+    <div className={s.header}>
+      <div className={s.header__leftside}>
         <img
-          className="header__logo"
+          className={s.header__logo}
           width="40"
           src={pizzaLogo}
-          alt="pizza logo"
+          alt="pizzaLogo"
         />
         <div>
-          <h1 className="header__title">Pizza App</h1>
-          <p className="header__subtitle">доставка пиццы по городу</p>
+          <h1 className={s.header__title}>Pizza App</h1>
+          <p className={s.header__subtitle}>доставка пиццы по городу</p>
         </div>
       </div>
-      <div className="header__rightside">
-        <div className="header__button-wrapper">
+      <div className={s.header__rightside}>
+        <div className={s.header__buttonWrapper}>
           <span>10 000 ₽</span>
-          <div className="delimiter" />
+          <div className={s.delimiter} />
           <svg
             width="18"
             height="18"

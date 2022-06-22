@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import "./style.scss";
+import s from "./style.module.scss";
 
 const typesOfDough = [
   { name: "тонкое" },
@@ -13,20 +12,20 @@ const PizzaCard = ({ pizza }) => {
   const [selectedSize, setSelectedSize] = useState(pizza.sizes[0]);
 
   return (
-    <div className="pizza-card-wrapper">
-      <div className="pizza-card">
+    <div className={s.pizzaCard__wrapper}>
+      <div className={s.pizzaCard}>
         <img
-          className="pizza-card__image"
+          className={s.pizzaCard__image}
           src={pizza.imageUrl}
           alt="pizzaImage"
         />
-        <h4 className="pizza-card__title">{pizza.title}</h4>
+        <h4 className={s.pizzaCard__title}>{pizza.title}</h4>
 
-        <div className="pizza-card__select">
+        <div className={s.pizzaCard__select}>
           <ul>
             {typesOfDough.map(({ name }) => (
               <li
-                className={name === selectedDough ? "active" : ""}
+                className={name === selectedDough ? s.active : ""}
                 key={name}
                 onClick={(event) => {
                   setSelectedDough(event.target.innerText);
@@ -39,7 +38,7 @@ const PizzaCard = ({ pizza }) => {
           <ul>
             {pizza.sizes.map((size) => (
               <li
-                className={size === selectedSize ? "active" : ""}
+                className={size === selectedSize ? s.active : ""}
                 key={size}
                 onClick={(event) => {
                   setSelectedSize(parseInt(event.target.innerText));
@@ -50,9 +49,9 @@ const PizzaCard = ({ pizza }) => {
             ))}
           </ul>
         </div>
-        <div className="pizza-card__bottom">
-          <div className="pizza-card__price">от {pizza.price} ₽</div>
-          <button className="button  button--add">
+        <div className={s.pizzaCard__bottom}>
+          <div className={s.pizzaCard__price}>от {pizza.price} ₽</div>
+          <button className={s.buttonAdd}>
             <svg
               width="12"
               height="12"

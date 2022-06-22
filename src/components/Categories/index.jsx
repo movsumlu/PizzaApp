@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import "./style.scss";
+import s from "./style.module.scss";
 
 const categories = [
   {
@@ -25,11 +24,11 @@ const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState("Все");
 
   return (
-    <div className="categories">
+    <div className={s.categories}>
       <ul>
         {categories.map(({ name }) => (
           <li
-            className={name === selectedCategory ? "active" : ""}
+            className={name === selectedCategory ? s.active : ""}
             key={name}
             onClick={(event) => {
               setSelectedCategory(event.target.innerText);

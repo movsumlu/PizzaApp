@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./style.scss";
+import s from "./style.module.scss";
 
 const typesOfSorting = [
   { name: "популярности ↓" },
@@ -23,8 +23,8 @@ const Sorting = () => {
   };
 
   return (
-    <div className="sorting">
-      <div className="sorting__label">
+    <div className={s.sorting}>
+      <div className={s.sorting__label}>
         <b>Сортировка по:</b>
         <span onClick={() => setShowPopup(!showPopup)}>
           {selectedTypeOfSorting}
@@ -32,7 +32,7 @@ const Sorting = () => {
       </div>
 
       {showPopup && (
-        <div className="sorting__popup">
+        <div className={s.sorting__popup}>
           <ul>
             {typesOfSorting.map(({ name }) => (
               <li onClick={onSelectTypeOfSorting} key={name}>
