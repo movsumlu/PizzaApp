@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/PizzaApp/static/css/main.7a70b6e8.css",
-    "main.js": "/PizzaApp/static/js/main.9cc5d8e1.js",
+    "main.css": "/PizzaApp/static/css/main.3cfe9ef7.css",
+    "main.js": "/PizzaApp/static/js/main.f8558766.js",
+    "static/media/empty-cart.svg": "/PizzaApp/static/media/empty-cart.5aa5dac99a832c62f3ef0fe79ac96d2d.svg",
     "static/media/pizza-logo.svg": "/PizzaApp/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/PizzaApp/index.html",
-    "main.7a70b6e8.css.map": "/PizzaApp/static/css/main.7a70b6e8.css.map",
-    "main.9cc5d8e1.js.map": "/PizzaApp/static/js/main.9cc5d8e1.js.map"
+    "main.3cfe9ef7.css.map": "/PizzaApp/static/css/main.3cfe9ef7.css.map",
+    "main.f8558766.js.map": "/PizzaApp/static/js/main.f8558766.js.map"
   },
   "entrypoints": [
-    "static/css/main.7a70b6e8.css",
-    "static/js/main.9cc5d8e1.js"
+    "static/css/main.3cfe9ef7.css",
+    "static/js/main.f8558766.js"
   ]
 }
