@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import pizzaLogo from "../../assets/images/pizza-logo.svg";
+import pizzaLogo from "../../assets/images/pizzaLogo.svg";
 import s from "./style.module.scss";
 
 const Header = () => {

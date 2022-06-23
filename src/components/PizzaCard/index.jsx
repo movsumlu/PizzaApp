@@ -8,12 +8,13 @@ const PizzaCard = ({ pizza, setActive }) => {
   const [selectedSize, setSelectedSize] = useState(pizza.sizes[0]);
 
   return (
-    <div className={s.pizzaCard__wrapper} onClick={() => setActive(true)}>
+    <div className={s.pizzaCard__wrapper}>
       <div className={s.pizzaCard}>
         <img
           className={s.pizzaCard__image}
           src={pizza.imageUrl}
           alt="pizzaImage"
+          onClick={() => setActive(true)}
         />
         <h4 className={s.pizzaCard__title}>{pizza.title}</h4>
 

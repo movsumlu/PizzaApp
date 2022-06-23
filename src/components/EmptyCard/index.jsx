@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import s from "./style.module.scss";
-import emptyCartImage from "../../assets/images/empty-cart.svg";
+import emptyCartImage from "../../assets/images/emptyCart.svg";
 
 const EmptyCard = () => (
   <div className={s.emptyCard}>
@@ -9,7 +9,7 @@ const EmptyCard = () => (
     <p>Для того, чтобы заказать пиццу, перейди в меню.</p>
     <img src={emptyCartImage} alt="emptyCartImage" />
     <Link to="/PizzaApp/" className={s.returnButton}>
-      <span>Вернуться в меню</span>
+      <span>Перейти в меню</span>
     </Link>
   </div>
 );
