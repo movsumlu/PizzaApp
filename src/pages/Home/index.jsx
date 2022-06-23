@@ -16,7 +16,7 @@ const Home = () => {
   const [isModalActive, setIsModalActive] = useState(false);
 
   const pizzasCards = pizzas.map((pizza) => (
-    <PizzaCard pizza={pizza} key={pizza.id} />
+    <PizzaCard pizza={pizza} key={pizza.id} setActive={setIsModalActive} />
   ));
 
   const pizzasCardsSkeletons = [...new Array(12)].map((_, index) => (

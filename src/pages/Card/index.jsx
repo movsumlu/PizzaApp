@@ -1,5 +1,7 @@
+import { EmptyCard } from "../../components/EmptyCard";
+
 const Card = () => {
-  return <div>Card</div>;
+  return <EmptyCard />;
 };
 
 export { Card };

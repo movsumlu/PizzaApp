@@ -3,12 +3,12 @@ import s from "./style.module.scss";
 
 const typesOfDough = [{ name: "тонкое" }, { name: "традиционное" }];
 
-const PizzaCard = ({ pizza }) => {
+const PizzaCard = ({ pizza, setActive }) => {
   const [selectedDough, setSelectedDough] = useState("тонкое");
   const [selectedSize, setSelectedSize] = useState(pizza.sizes[0]);
 
   return (
-    <div className={s.pizzaCard__wrapper}>
+    <div className={s.pizzaCard__wrapper} onClick={() => setActive(true)}>
       <div className={s.pizzaCard}>
         <img
           className={s.pizzaCard__image}
