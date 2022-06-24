@@ -1,6 +1,5 @@
-import axios from "axios";
-
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Categories } from "../../components/Categories";
 import { PizzaCard } from "../../components/PizzaCard";
@@ -8,12 +7,15 @@ import { PizzaCardModal } from "../../components/PizzaCardModal";
 import { PizzaCardSkeleton } from "../../components/PizzaCardSkeleton";
 import { Sorting } from "../../components/Sorting";
 
+import { fetchPizzas } from "../../store/pizza/asyncThunks";
+import { selectorOfPizzaState } from "../../store/pizza/selectors";
+
 import s from "./style.module.scss";
 
 const Home = () => {
-  const [pizzas, setPizzas] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [isModalActive, setIsModalActive] = useState(false);
+
+  const { pizzas, loading } = useSelector(selectorOfPizzaState);
 
   const pizzasCards = pizzas.map((pizza) => (
     <PizzaCard pizza={pizza} key={pizza.id} setActive={setIsModalActive} />
@@ -23,18 +25,11 @@ const Home = () => {
     <PizzaCardSkeleton key={index} />
   ));
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    axios
-      .get(`https://62b2b163c7e53744afd01e9f.mockapi.io/pizzas`)
-      .then((response) => {
-        const pizzas = response.data;
-        setPizzas(pizzas);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error.message || error);
-      });
-  }, []);
+    dispatch(fetchPizzas());
+  }, [dispatch]);
 
   return (
     <div className={s.cardWrapper}>
@@ -46,7 +41,7 @@ const Home = () => {
       <h2 className={s.cardWrapper__title}>Все пиццы</h2>
 
       <div className={s.cardWrapper__items}>
-        {isLoading ? pizzasCardsSkeletons : pizzasCards}
+        {loading ? pizzasCardsSkeletons : pizzasCards}
       </div>
 
       <PizzaCardModal active={isModalActive} setActive={setIsModalActive} />

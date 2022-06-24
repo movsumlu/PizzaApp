@@ -1,6 +1,6 @@
 ### Pizza App
 
-by React / Redux Toolkit / TypeScript
+by React / Redux Toolkit / TypeScript / Cypress
 
 #### [movsumlu.github.io/PizzaApp](https://movsumlu.github.io/PizzaApp/)
 
