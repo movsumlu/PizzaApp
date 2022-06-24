@@ -8,7 +8,7 @@ const PizzaCardModal = ({ active, setActive }) => (
     <div
       className={active ? `${s.modal__content} ${s.active}` : s.modal__content}
       onClick={(event) => event.stopPropagation()}
-    ></div>
+    />
   </div>
 );
 
