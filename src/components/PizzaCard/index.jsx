@@ -1,4 +1,8 @@
 import { useState } from "react";
+
+import { useDispatch } from "react-redux";
+import { addPizzaToCard } from "../../store/card/slice";
+
 import s from "./style.module.scss";
 
 const typesOfDough = [{ name: "тонкое" }, { name: "традиционное" }];
@@ -6,6 +10,8 @@ const typesOfDough = [{ name: "тонкое" }, { name: "традиционно�
 const PizzaCard = ({ pizza, setActive }) => {
   const [selectedDough, setSelectedDough] = useState("тонкое");
   const [selectedSize, setSelectedSize] = useState(pizza.sizes[0]);
+
+  const dispatch = useDispatch();
 
   return (
     <div className={s.pizzaCard__wrapper}>
@@ -61,7 +67,9 @@ const PizzaCard = ({ pizza, setActive }) => {
                 fill="white"
               />
             </svg>
-            <span>Добавить</span>
+            <span onClick={() => dispatch(addPizzaToCard(pizza))}>
+              Добавить
+            </span>
           </button>
         </div>
       </div>

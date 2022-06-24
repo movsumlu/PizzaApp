@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+import { selectorOfCardState } from "../../store/card/selectors";
+
 import pizzaLogo from "../../assets/images/pizzaLogo.svg";
 import s from "./style.module.scss";
 
 const Header = () => {
+  const { count, totalPrice } = useSelector(selectorOfCardState);
+
   return (
     <div className={s.header}>
       <Link to="/PizzaApp/">
@@ -24,7 +29,7 @@ const Header = () => {
       <Link to="/PizzaApp/card">
         <div className={s.header__rightside}>
           <div className={s.header__buttonWrapper}>
-            <span>10 000 ₽</span>
+            <span>{totalPrice} ₽</span>
             <div className={s.delimiter} />
             <svg
               width="18"
@@ -55,7 +60,7 @@ const Header = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>3</span>
+            {count ? <span>{count}</span> : ""}
           </div>
         </div>
       </Link>
