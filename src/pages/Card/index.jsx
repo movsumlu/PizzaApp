@@ -7,6 +7,7 @@ import { selectorOfCardState } from "../../store/card/selectors";
 import { clearCard } from "../../store/card/slice";
 
 import { ReturnComponent } from "../../components/ReturnComponent";
+import { PizzaCardInline } from "../../components/PizzaCardInline";
 import { GlobalSvgSelector } from "../../components/GlobalSvgSelector";
 
 import s from "./style.module.scss";
@@ -39,6 +40,9 @@ const Card = () => {
           <span onClick={() => dispatch(clearCard())}>Очистить корзину</span>
         </div>
       </div>
+      {card.map((pizza) => {
+        return <PizzaCardInline pizza={pizza} />;
+      })}
 
       <div className={s.cart__bottom}>
         <div className={s.details}>

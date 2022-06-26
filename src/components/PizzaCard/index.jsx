@@ -7,10 +7,8 @@ import { GlobalSvgSelector } from "../GlobalSvgSelector";
 
 import s from "./style.module.scss";
 
-const typesOfDough = [{ name: "тонкое" }, { name: "традиционное" }];
-
 const PizzaCard = ({ pizza, setActive }) => {
-  const [selectedDough, setSelectedDough] = useState("тонкое");
+  const [selectedDough, setSelectedDough] = useState(pizza.dough[0].name);
   const [selectedSize, setSelectedSize] = useState(pizza.sizes[0]);
 
   const dispatch = useDispatch();
@@ -28,7 +26,7 @@ const PizzaCard = ({ pizza, setActive }) => {
 
         <div className={s.pizzaCard__select}>
           <ul>
-            {typesOfDough.map(({ name }) => (
+            {pizza.dough.map(({ name }) => (
               <li
                 className={name === selectedDough ? s.active : ""}
                 key={name}

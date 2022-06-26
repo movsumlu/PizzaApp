@@ -31,8 +31,14 @@ const Header = () => {
       <Link to="/PizzaApp/card">
         <div className={s.header__rightside}>
           <div className={s.header__buttonWrapper}>
-            <span>{totalPrice} ₽</span>
-            <div className={s.delimiter} />
+            {totalPrice ? (
+              <>
+                <span className={s.price}>{totalPrice} ₽</span>
+                <div className={s.delimiter} />
+              </>
+            ) : (
+              ""
+            )}
             <GlobalSvgSelector type="basket-icon" />
             {count ? <span>{count}</span> : ""}
           </div>
