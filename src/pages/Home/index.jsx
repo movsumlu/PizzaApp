@@ -7,8 +7,8 @@ import { PizzaCardModal } from "../../components/PizzaCardModal";
 import { PizzaCardSkeleton } from "../../components/PizzaCardSkeleton";
 import { Sorting } from "../../components/Sorting";
 
-import { fetchPizzas } from "../../store/pizza/asyncThunks";
-import { selectorOfPizzaState } from "../../store/pizza/selectors";
+import { fetchPizzas } from "../../store/pizzas/asyncThunks";
+import { selectorOfPizzaState } from "../../store/pizzas/selectors";
 
 import s from "./style.module.scss";
 

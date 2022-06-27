@@ -1,19 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  sortingType: "популярности ↓",
+  filter: "Все",
+  sorting: "популярности ↓",
 };
 
 const filtersSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
-    updateSortingType(state, action) {
-      state.sortingType = action.payload;
+    updateFilter(state, action) {
+      state.filter = action.payload;
+    },
+    updateSorting(state, action) {
+      state.sorting = action.payload;
     },
   },
 });
 
-export const { updateSortingType } = filtersSlice.actions;
+export const { updateFilter, updateSorting } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

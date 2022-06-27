@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectorOfFiltersState } from "../../store/filters/selectors";
-import { updateSortingType } from "../../store/filters/slice";
+import { updateSorting } from "../../store/filters/slice";
 
-import { sortingPizzas } from "../../store/pizza/slice";
+import { sortingPizzas } from "../../store/pizzas/slice";
 
 import s from "./style.module.scss";
 
@@ -19,16 +19,16 @@ const typesOfSorting = [
 
 const Sorting = () => {
   const dispatch = useDispatch();
-
-  const { sortingType } = useSelector(selectorOfFiltersState);
+  const { sorting } = useSelector(selectorOfFiltersState);
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const onSelectTypeOfSorting = (event) => {
+  const onSelectSorting = (event) => {
     const typeOfSorting = event.target.innerText;
 
-    dispatch(updateSortingType(typeOfSorting));
+    dispatch(updateSorting(typeOfSorting));
     dispatch(sortingPizzas(typeOfSorting));
+
     setShowPopup(false);
   };
 
@@ -36,14 +36,14 @@ const Sorting = () => {
     <div className={s.sorting}>
       <div className={s.sorting__label}>
         <b>Сортировка по:</b>
-        <span onClick={() => setShowPopup(!showPopup)}>{sortingType}</span>
+        <span onClick={() => setShowPopup(!showPopup)}>{sorting}</span>
       </div>
 
       {showPopup && (
         <div className={s.sorting__popup}>
           <ul>
             {typesOfSorting.map(({ name }) => (
-              <li onClick={onSelectTypeOfSorting} key={name}>
+              <li onClick={onSelectSorting} key={name}>
                 {name}
               </li>
             ))}

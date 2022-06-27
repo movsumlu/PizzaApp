@@ -1,4 +1,10 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { updateFilter } from "../../store/filters/slice";
+import { selectorOfFiltersState } from "../../store/filters/selectors";
+
+import { filteringPizzas } from "../../store/pizzas/slice";
+
 import s from "./style.module.scss";
 
 const categories = [
@@ -15,24 +21,27 @@ const categories = [
   {
     name: "Острые 🌶️",
   },
-  {
-    name: "Закрытые",
-  },
 ];
 
 const Categories = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Все");
+  const dispatch = useDispatch();
+  const { filter } = useSelector(selectorOfFiltersState);
+
+  const onSelectFilter = (event) => {
+    const typeOfSorting = event.target.innerText;
+
+    dispatch(updateFilter(event.target.innerText));
+    dispatch(filteringPizzas(typeOfSorting));
+  };
 
   return (
     <div className={s.categories}>
       <ul>
         {categories.map(({ name }) => (
           <li
-            className={name === selectedCategory ? s.active : ""}
+            className={name === filter ? s.active : ""}
             key={name}
-            onClick={(event) => {
-              setSelectedCategory(event.target.innerText);
-            }}
+            onClick={onSelectFilter}
           >
             {name}
           </li>
