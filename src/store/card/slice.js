@@ -34,6 +34,8 @@ const cardSlice = createSlice({
     },
     removePizzaFromCard(state, action) {
       state.card = state.card.filter((pizza) => pizza.id !== action.payload);
+      state.count = getCountOfPizzas(state.card);
+      state.totalPrice = getTotalPrice(state.card);
     },
     clearCard(state) {
       state.card = [];
