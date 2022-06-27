@@ -1,29 +1,52 @@
+import { useDispatch } from "react-redux";
+
+import {
+  minusPizzaToCard,
+  addPizzaToCard,
+  removePizzaFromCard,
+} from "../../store/card/slice";
+
 import { GlobalSvgSelector } from "../GlobalSvgSelector";
-import "./style.scss";
+
+import s from "./style.module.scss";
 
 const PizzaCardInline = ({ pizza }) => {
+  const dispatch = useDispatch();
+
+  const { id, title, price, quantity } = pizza;
+
   return (
-    <div className="card-inline">
-      <div className="image-wrapper">
+    <div className={s.cardInline}>
+      <div className={s.imageWrapper}>
         <img src={pizza.imageUrl} alt="pizzaImage" />
       </div>
-      <div className="description">
-        <h3>{pizza.title}</h3>
+      <div className={s.description}>
+        <h3>{title}</h3>
         <p>Тонкое, 22 см.</p>
       </div>
-      <div className="buttonWrapper">
-        <button className="minusButton">
+      <div className={s.buttonsWrapper}>
+        <button
+          className={s.minusButton}
+          disabled={quantity === 1}
+          onClick={() => dispatch(minusPizzaToCard(pizza))}
+        >
           <GlobalSvgSelector type="minus_button-icon" />
         </button>
-        <b>{pizza.quantity}</b>
-        <button className="addButton">
+        <b>{quantity}</b>
+        <button
+          className={s.addButton}
+          onClick={() => dispatch(addPizzaToCard(pizza))}
+        >
           <GlobalSvgSelector type="plus_button-icon" />
         </button>
       </div>
-      <div className="price">
-        <b>{pizza.price * pizza.quantity} ₽</b>
+      <div className={s.price}>
+        <b>{price * quantity} ₽</b>
       </div>
-      <div className="removeButton">
+      <div
+        className={s.removeButton}
+        onClick={() => dispatch(removePizzaFromCard(id))}
+      >
         <button>
           <GlobalSvgSelector type="remove-icon" />
         </button>

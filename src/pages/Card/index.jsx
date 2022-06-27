@@ -40,9 +40,9 @@ const Card = () => {
           <span onClick={() => dispatch(clearCard())}>Очистить корзину</span>
         </div>
       </div>
-      {card.map((pizza) => {
-        return <PizzaCardInline pizza={pizza} />;
-      })}
+      {card.map((pizza) => (
+        <PizzaCardInline key={pizza.id} pizza={pizza} />
+      ))}
 
       <div className={s.cart__bottom}>
         <div className={s.details}>

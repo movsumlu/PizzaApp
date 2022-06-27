@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { selectorOfFiltersState } from "../../store/filters/selectors";
+import { updateSortingType } from "../../store/filters/slice";
+
+import { sortingPizzas } from "../../store/pizza/slice";
+
 import s from "./style.module.scss";
 
 const typesOfSorting = [
@@ -12,13 +18,17 @@ const typesOfSorting = [
 ];
 
 const Sorting = () => {
+  const dispatch = useDispatch();
+
+  const { sortingType } = useSelector(selectorOfFiltersState);
+
   const [showPopup, setShowPopup] = useState(false);
 
-  const [selectedTypeOfSorting, setSelectedTypeOfSorting] =
-    useState("популярности ↓");
-
   const onSelectTypeOfSorting = (event) => {
-    setSelectedTypeOfSorting(event.target.innerText);
+    const typeOfSorting = event.target.innerText;
+
+    dispatch(updateSortingType(typeOfSorting));
+    dispatch(sortingPizzas(typeOfSorting));
     setShowPopup(false);
   };
 
@@ -26,9 +36,7 @@ const Sorting = () => {
     <div className={s.sorting}>
       <div className={s.sorting__label}>
         <b>Сортировка по:</b>
-        <span onClick={() => setShowPopup(!showPopup)}>
-          {selectedTypeOfSorting}
-        </span>
+        <span onClick={() => setShowPopup(!showPopup)}>{sortingType}</span>
       </div>
 
       {showPopup && (

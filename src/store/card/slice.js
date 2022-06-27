@@ -14,6 +14,14 @@ const cardSlice = createSlice({
   name: "card",
   initialState,
   reducers: {
+    minusPizzaToCard(state, action) {
+      const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
+
+      foundPizzaByID.quantity--;
+
+      state.count = getCountOfPizzas(state.card);
+      state.totalPrice = getTotalPrice(state.card);
+    },
     addPizzaToCard(state, action) {
       const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
 
@@ -24,7 +32,9 @@ const cardSlice = createSlice({
       state.count = getCountOfPizzas(state.card);
       state.totalPrice = getTotalPrice(state.card);
     },
-    removePizzaFromCard(state, action) {},
+    removePizzaFromCard(state, action) {
+      state.card = state.card.filter((pizza) => pizza.id !== action.payload);
+    },
     clearCard(state) {
       state.card = [];
       state.count = 0;
@@ -33,6 +43,11 @@ const cardSlice = createSlice({
   },
 });
 
-export const { addPizzaToCard, clearCard } = cardSlice.actions;
+export const {
+  minusPizzaToCard,
+  addPizzaToCard,
+  removePizzaFromCard,
+  clearCard,
+} = cardSlice.actions;
 
 export default cardSlice.reducer;

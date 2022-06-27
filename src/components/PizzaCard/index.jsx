@@ -54,11 +54,12 @@ const PizzaCard = ({ pizza, setActive }) => {
         </div>
         <div className={s.pizzaCard__bottom}>
           <div className={s.pizzaCard__price}>от {pizza.price} ₽</div>
-          <button className={s.buttonAdd}>
+          <button
+            className={s.buttonAdd}
+            onClick={() => dispatch(addPizzaToCard(pizza))}
+          >
             <GlobalSvgSelector type="plus-icon" />
-            <span onClick={() => dispatch(addPizzaToCard(pizza))}>
-              Добавить
-            </span>
+            <span>Добавить</span>
           </button>
         </div>
       </div>
