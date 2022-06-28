@@ -50,11 +50,13 @@ const Home = () => {
         {loading ? pizzasCardsSkeletons : pizzasCards}
       </div>
 
-      <PizzaCardModal
-        active={isModalActive}
-        pizza={selectedPizza}
-        setIsModalActive={setIsModalActive}
-      />
+      {selectedPizza && (
+        <PizzaCardModal
+          active={isModalActive}
+          pizza={selectedPizza}
+          setIsModalActive={setIsModalActive}
+        />
+      )}
     </div>
   );
 };

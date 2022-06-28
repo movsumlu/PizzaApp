@@ -1,14 +1,11 @@
-import axios from "axios";
+import { API } from "../../API";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizzas",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(
-        `https://62b2b163c7e53744afd01e9f.mockapi.io/pizzas`
-      );
-
+      const { data } = await API.get();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
