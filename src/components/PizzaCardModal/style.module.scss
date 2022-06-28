@@ -14,21 +14,46 @@
   pointer-events: none;
   transition: 0.5s;
 
+  img {
+    padding: 20px;
+    height: 350px;
+    width: 350px;
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+
   &.active {
     opacity: 1;
     pointer-events: all;
   }
 
   &__content {
+    display: flex;
     padding: 20px;
     border-radius: 10px;
-    width: 600px;
+    width: 800px;
     background-color: $white-color;
     transform: scale(0.5);
     transition: 0.5s all;
 
     &.active {
       transform: scale(1);
+    }
+
+    .composition {
+      margin-top: 20px;
+      color: $boulder-color;
+    }
+
+    .bottomSection {
+      position: absolute;
+      bottom: 30px;
+      width: 400px;
     }
   }
 }

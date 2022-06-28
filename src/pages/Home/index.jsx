@@ -14,11 +14,17 @@ import s from "./style.module.scss";
 
 const Home = () => {
   const [isModalActive, setIsModalActive] = useState(false);
+  const [selectedPizza, setSelectedPizza] = useState(null);
 
   const { pizzas, loading } = useSelector(selectorOfPizzaState);
 
   const pizzasCards = pizzas.map((pizza) => (
-    <PizzaCard pizza={pizza} key={pizza.id} setActive={setIsModalActive} />
+    <PizzaCard
+      pizza={pizza}
+      key={pizza.id}
+      setIsModalActive={setIsModalActive}
+      setSelectedPizza={setSelectedPizza}
+    />
   ));
 
   const pizzasCardsSkeletons = [...new Array(12)].map((_, index) => (
@@ -44,7 +50,11 @@ const Home = () => {
         {loading ? pizzasCardsSkeletons : pizzasCards}
       </div>
 
-      <PizzaCardModal active={isModalActive} setActive={setIsModalActive} />
+      <PizzaCardModal
+        active={isModalActive}
+        pizza={selectedPizza}
+        setIsModalActive={setIsModalActive}
+      />
     </div>
   );
 };

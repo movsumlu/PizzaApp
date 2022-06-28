@@ -1,17 +1,12 @@
-import { useState } from "react";
-
-import { useDispatch } from "react-redux";
-import { addPizzaToCard } from "../../store/card/slice";
-
-import { GlobalSvgSelector } from "../GlobalSvgSelector";
+import { Select } from "../Select";
 
 import s from "./style.module.scss";
 
-const PizzaCard = ({ pizza, setActive }) => {
-  const [selectedDough, setSelectedDough] = useState(pizza.dough[0].name);
-  const [selectedSize, setSelectedSize] = useState(pizza.sizes[0]);
-
-  const dispatch = useDispatch();
+const PizzaCard = ({ pizza, setIsModalActive, setSelectedPizza }) => {
+  const onSelectPizza = () => {
+    setIsModalActive(true);
+    setSelectedPizza(pizza);
+  };
 
   return (
     <div className={s.pizzaCard__wrapper}>
@@ -20,48 +15,11 @@ const PizzaCard = ({ pizza, setActive }) => {
           className={s.pizzaCard__image}
           src={pizza.imageUrl}
           alt="pizzaImage"
-          onClick={() => setActive(true)}
+          onClick={onSelectPizza}
         />
         <h4 className={s.pizzaCard__title}>{pizza.title}</h4>
 
-        <div className={s.pizzaCard__select}>
-          <ul>
-            {pizza.dough.map(({ name }) => (
-              <li
-                className={name === selectedDough ? s.active : ""}
-                key={name}
-                onClick={(event) => {
-                  setSelectedDough(event.target.innerText);
-                }}
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
-          <ul>
-            {pizza.sizes.map((size) => (
-              <li
-                className={size === selectedSize ? s.active : ""}
-                key={size}
-                onClick={(event) => {
-                  setSelectedSize(parseInt(event.target.innerText));
-                }}
-              >
-                {size}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={s.pizzaCard__bottom}>
-          <div className={s.pizzaCard__price}>от {pizza.price} ₽</div>
-          <button
-            className={s.buttonAdd}
-            onClick={() => dispatch(addPizzaToCard(pizza))}
-          >
-            <GlobalSvgSelector type="plus-icon" />
-            <span>Добавить</span>
-          </button>
-        </div>
+        <Select pizza={pizza} />
       </div>
     </div>
   );

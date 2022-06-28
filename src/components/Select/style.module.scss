@@ -1,0 +1,92 @@
+@import "../../style/variables.scss";
+
+.selectionSide {
+  display: flex;
+  background-color: $concrete-color;
+  border-radius: 10px;
+  flex-direction: column;
+  padding: 6px;
+
+  ul {
+    display: flex;
+    flex: 1;
+
+    &:first-of-type {
+      margin-bottom: 6px;
+    }
+
+    li {
+      padding: 8px;
+      flex: 1;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.active {
+        background: $white-color;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.bottomSide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .buttonAdd {
+    display: inline-block;
+    border-radius: 30px;
+    padding: 10px 20px;
+    min-width: 100px;
+    text-align: center;
+    transition: background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+    border: 1px solid transparent;
+    cursor: pointer;
+    background-color: $white-color;
+    border-color: $orange-color;
+
+    svg {
+      margin-right: 2px;
+
+      path {
+        fill: $orange-color;
+      }
+    }
+
+    span {
+      color: $orange-color;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: $orange-color;
+
+      span {
+        color: $white-color;
+      }
+
+      svg {
+        path {
+          fill: $white-color;
+        }
+      }
+    }
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.015em;
+  }
+}
