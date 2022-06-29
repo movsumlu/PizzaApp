@@ -2,7 +2,7 @@ import { Select } from "../Select";
 
 import s from "./style.module.scss";
 
-const PizzaCardModal = ({ active, setIsModalActive, pizza }) => {
+const PizzaCardModal = ({ pizza, active, setIsModalActive }) => {
   return (
     <div
       className={active ? `${s.modal} ${s.active}` : s.modal}
@@ -15,7 +15,7 @@ const PizzaCardModal = ({ active, setIsModalActive, pizza }) => {
         onClick={(event) => event.stopPropagation()}
       >
         <span className={s.closeIcon} onClick={() => setIsModalActive(false)}>
-          X
+          ×
         </span>
         <div>
           <img src={pizza.imageUrl} alt="pizzaImage" />

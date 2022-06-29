@@ -21,9 +21,10 @@
   }
 
   .closeIcon {
+    font-size: 30px;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    right: 15px;
     cursor: pointer;
   }
 
@@ -48,6 +49,7 @@
     .composition {
       margin-top: 20px;
       color: $boulder-color;
+      font-size: 18px;
     }
 
     .bottomSection {
