@@ -1,4 +1,4 @@
-import { API } from "../../API";
+import { API } from "API";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const fetchPizzas = createAsyncThunk(

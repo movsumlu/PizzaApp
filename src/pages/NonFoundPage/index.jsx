@@ -1,5 +1,5 @@
-import { ReturnComponent } from "../../components/ReturnComponent";
-import nonFoundPageImage from "../../assets/images/nonFoundPage.svg";
+import { ReturnComponent } from "components/ReturnComponent";
+import nonFoundPageImage from "assets/images/nonFoundPage.svg";
 
 const NonFoundPage = () => (
   <ReturnComponent

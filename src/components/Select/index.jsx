@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { addPizzaToCard } from "../../store/card/slice";
+import { addPizzaToCard } from "store/card/slice";
 
-import { GlobalSvgSelector } from "../GlobalSvgSelector";
+import { GlobalSvgSelector } from "components/GlobalSvgSelector";
 
 import s from "./style.module.scss";
 

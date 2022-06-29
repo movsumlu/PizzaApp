@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Categories } from "../../components/Categories";
-import { PizzaCard } from "../../components/PizzaCard";
-import { PizzaCardModal } from "../../components/PizzaCardModal";
-import { PizzaCardSkeleton } from "../../components/PizzaCardSkeleton";
-import { Sorting } from "../../components/Sorting";
+import { Categories } from "components/Categories";
+import { PizzaCard } from "components/PizzaCard";
+import { PizzaCardModal } from "components/PizzaCardModal";
+import { PizzaCardSkeleton } from "components/PizzaCardSkeleton";
+import { Sorting } from "components/Sorting";
 
-import { fetchPizzas } from "../../store/pizzas/asyncThunks";
-import { selectorOfPizzaState } from "../../store/pizzas/selectors";
+import { fetchPizzas } from "store/pizzas/asyncThunks";
+import { selectorOfPizzaState } from "store/pizzas/selectors";
 
 import s from "./style.module.scss";
 

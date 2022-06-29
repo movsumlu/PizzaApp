@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import { selectorOfCardState } from "../../store/card/selectors";
-import { clearCard } from "../../store/card/slice";
+import { selectorOfCardState } from "store/card/selectors";
+import { clearCard } from "store/card/slice";
 
-import { ReturnComponent } from "../../components/ReturnComponent";
-import { PizzaCardInline } from "../../components/PizzaCardInline";
-import { GlobalSvgSelector } from "../../components/GlobalSvgSelector";
+import { ReturnComponent } from "components/ReturnComponent";
+import { PizzaCardInline } from "components/PizzaCardInline";
+import { GlobalSvgSelector } from "components/GlobalSvgSelector";
+
+import emptyCartImage from "assets/images/emptyCart.svg";
 
 import s from "./style.module.scss";
-import emptyCartImage from "../../assets/images/emptyCart.svg";
 
 const Card = () => {
   const { card, count, totalPrice } = useSelector(selectorOfCardState);

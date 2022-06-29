@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectorOfFiltersState } from "../../store/filters/selectors";
-import { updateSorting } from "../../store/filters/slice";
+import { selectorOfFiltersState } from "store/filters/selectors";
+import { updateSorting } from "store/filters/slice";
 
-import { sortingPizzas } from "../../store/pizzas/slice";
+import { sortingPizzas } from "store/pizzas/slice";
 
 import s from "./style.module.scss";
 

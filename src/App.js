@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 
-import { Header } from "./components/Header";
+import { Header } from "components/Header";
 
-import { Home } from "./pages/Home";
-import { Card } from "./pages/Card";
-import { NonFoundPage } from "./pages/NonFoundPage";
+import { Home } from "pages/Home";
+import { Card } from "pages/Card";
+import { NonFoundPage } from "pages/NonFoundPage";
 
 const App = () => {
   return (

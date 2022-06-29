@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { findPizzaByID } from "../../utils/findPizzaByID";
-import { getCountOfPizzas } from "../../utils/getCountOfPizzas";
-import { getTotalPrice } from "../../utils/getTotalPrice";
-import { LS } from "../../utils/LS";
+import { findPizzaByID } from "utils/findPizzaByID";
+import { getCountOfPizzas } from "utils/getCountOfPizzas";
+import { getTotalPrice } from "utils/getTotalPrice";
+import { LS } from "utils/LS";
 
 const initialState = {
   card: LS.getItem("cardFromLS") || [],

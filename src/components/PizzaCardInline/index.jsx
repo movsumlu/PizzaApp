@@ -4,9 +4,9 @@ import {
   minusPizzaToCard,
   addPizzaToCard,
   removePizzaFromCard,
-} from "../../store/card/slice";
+} from "store/card/slice";
 
-import { GlobalSvgSelector } from "../GlobalSvgSelector";
+import { GlobalSvgSelector } from "components/GlobalSvgSelector";
 
 import s from "./style.module.scss";
 

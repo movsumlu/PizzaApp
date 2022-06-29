@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { updateFilter } from "../../store/filters/slice";
-import { selectorOfFiltersState } from "../../store/filters/selectors";
+import { updateFilter } from "store/filters/slice";
+import { selectorOfFiltersState } from "store/filters/selectors";
 
-import { filteringPizzas } from "../../store/pizzas/slice";
+import { filteringPizzas } from "store/pizzas/slice";
 
 import s from "./style.module.scss";
 

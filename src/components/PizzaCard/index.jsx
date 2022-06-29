@@ -1,4 +1,4 @@
-import { Select } from "../Select";
+import { Select } from "components/Select";
 
 import s from "./style.module.scss";
 
