@@ -13,7 +13,7 @@ const Select: FC<{ pizza: IPizza }> = ({ pizza }) => {
   const dispatch = useDispatch();
 
   const [selectedDough, setSelectedDough] = useState<string>(
-    pizza.dough[0].name
+    pizza.doughes[0].name
   );
 
   const [selectedSize, setSelectedSize] = useState<number>(pizza.sizes[0]);
@@ -28,7 +28,7 @@ const Select: FC<{ pizza: IPizza }> = ({ pizza }) => {
     <>
       <div className={styles.selectionSide}>
         <ul>
-          {pizza.dough.map(({ name }) => (
+          {pizza.doughes.map(({ name }) => (
             <li
               className={name === selectedDough ? styles.active : ""}
               key={name}

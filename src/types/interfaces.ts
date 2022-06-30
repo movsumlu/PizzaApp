@@ -3,7 +3,7 @@ interface IDough {
 }
 
 export interface IPizza {
-  id: string;
+  id: number;
   title: string;
   price: number;
   imageUrl: string;
@@ -12,5 +12,5 @@ export interface IPizza {
   rating: number;
   composition: string;
   quantity: number;
-  dough: IDough[];
+  doughes: IDough[];
 }
