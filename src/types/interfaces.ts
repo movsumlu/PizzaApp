@@ -13,4 +13,5 @@ export interface IPizza {
   composition: string;
   quantity: number;
   doughes: IDough[];
+  category: number[];
 }

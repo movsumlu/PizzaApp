@@ -5,7 +5,15 @@ import { getCountOfPizzas } from "utils/getCountOfPizzas";
 import { getTotalPrice } from "utils/getTotalPrice";
 import { LS } from "utils/LS";
 
-const initialState = {
+import { IPizza } from "types/interfaces";
+
+interface ICardState {
+  card: IPizza[];
+  count: number;
+  totalPrice: number;
+}
+
+const initialState: ICardState = {
   card: LS.getItem("cardFromLS") || [],
   count: LS.getItem("countFromLS") || 0,
   totalPrice: LS.getItem("totalPriceFromLS") || 0,
@@ -18,7 +26,9 @@ const cardSlice = createSlice({
     minusPizzaToCard(state, action) {
       const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
 
-      foundPizzaByID.quantity--;
+      if (foundPizzaByID?.quantity) {
+        foundPizzaByID.quantity--;
+      }
 
       state.count = getCountOfPizzas(state.card);
       state.totalPrice = getTotalPrice(state.card);
@@ -42,7 +52,9 @@ const cardSlice = createSlice({
       LS.setItem("totalPriceFromLS", state.totalPrice);
     },
     removePizzaFromCard(state, action) {
-      state.card = state.card.filter((pizza) => pizza.id !== action.payload);
+      state.card = state.card.filter(
+        (pizza: IPizza) => pizza.id !== action.payload
+      );
       state.count = getCountOfPizzas(state.card);
       state.totalPrice = getTotalPrice(state.card);
 

@@ -5,9 +5,10 @@ import { Provider } from "react-redux";
 import { store } from "store";
 
 import { App } from "App";
+
 import "style/main.scss";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 
 root.render(
   <Router>

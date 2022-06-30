@@ -1,11 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchPizzas } from "./asyncThunks";
 
-const initialState = {
+import { IPizza } from "types/interfaces";
+
+interface IPizzasState {
+  pizzas: IPizza[];
+  allPizzas: IPizza[];
+  loading: boolean;
+  errors: any;
+}
+
+const initialState: IPizzasState = {
   pizzas: [],
   allPizzas: [],
   loading: false,
-  error: null,
+  errors: null,
 };
 
 const pizzaSlice = createSlice({
@@ -65,19 +74,24 @@ const pizzaSlice = createSlice({
       }
     },
   },
-  extraReducers: {
-    [fetchPizzas.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchPizzas.pending, (state) => {
       state.loading = true;
-    },
-    [fetchPizzas.fulfilled]: (state, action) => {
-      state.pizzas = action.payload;
-      state.allPizzas = action.payload;
+    });
+
+    builder.addCase(
+      fetchPizzas.fulfilled,
+      (state, action: PayloadAction<IPizza[]>) => {
+        state.pizzas = action.payload;
+        state.allPizzas = action.payload;
+        state.loading = false;
+      }
+    );
+
+    builder.addCase(fetchPizzas.rejected, (state, action) => {
+      state.errors = action.payload;
       state.loading = false;
-    },
-    [fetchPizzas.rejected]: (state, action) => {
-      state.error = action.payload;
-      state.loading = false;
-    },
+    });
   },
 });
 

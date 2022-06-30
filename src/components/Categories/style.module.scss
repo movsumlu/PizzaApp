@@ -13,6 +13,12 @@
       transition: background-color 0.1s ease-in-out;
       cursor: pointer;
 
+      @media (max-width: 645px) {
+        font-size: 14px;
+        padding: 10px 20px;
+        border-radius: 15px;
+      }
+
       &:hover {
         background-color: darken($alabaster-color, 2%);
       }
@@ -26,5 +32,10 @@
         color: $white-color;
       }
     }
+  }
+
+  @media (max-width: 645px) {
+    overflow-x: auto;
+    width: 100%;
   }
 }

@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface IFiltersState {
+  filter: string;
+  sorting: string;
+}
+
+const initialState: IFiltersState = {
   filter: "Все",
   sorting: "популярности ↓",
 };
