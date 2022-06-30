@@ -1,6 +1,7 @@
+import { FC } from "react";
 import ContentLoader from "react-content-loader";
 
-const PizzaCardSkeleton = () => (
+const PizzaCardSkeleton: FC = () => (
   <ContentLoader
     speed={3}
     width={300}

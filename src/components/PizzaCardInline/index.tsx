@@ -1,3 +1,6 @@
+import { FC } from "react";
+import { IPizza } from "types/interfaces";
+
 import { useDispatch } from "react-redux";
 
 import {
@@ -8,25 +11,25 @@ import {
 
 import { GlobalSvgSelector } from "components/GlobalSvgSelector";
 
-import s from "./style.module.scss";
+import styles from "./style.module.scss";
 
-const PizzaCardInline = ({ pizza }) => {
+const PizzaCardInline: FC<{ pizza: IPizza }> = ({ pizza }) => {
   const dispatch = useDispatch();
 
   const { id, title, price, quantity } = pizza;
 
   return (
-    <div className={s.cardInline}>
-      <div className={s.imageWrapper}>
+    <div className={styles.cardInline}>
+      <div className={styles.imageWrapper}>
         <img src={pizza.imageUrl} alt="pizzaImage" />
       </div>
-      <div className={s.description}>
+      <div className={styles.description}>
         <h3>{title}</h3>
         <p>Тонкое, 22 см.</p>
       </div>
-      <div className={s.buttonsWrapper}>
+      <div className={styles.buttonsWrapper}>
         <button
-          className={s.minusButton}
+          className={styles.minusButton}
           disabled={quantity === 1}
           onClick={() => dispatch(minusPizzaToCard(pizza))}
         >
@@ -34,17 +37,17 @@ const PizzaCardInline = ({ pizza }) => {
         </button>
         <b>{quantity}</b>
         <button
-          className={s.addButton}
+          className={styles.addButton}
           onClick={() => dispatch(addPizzaToCard(pizza))}
         >
           <GlobalSvgSelector type="plus_button-icon" />
         </button>
       </div>
-      <div className={s.price}>
+      <div className={styles.price}>
         <b>{price * quantity} ₽</b>
       </div>
       <div
-        className={s.removeButton}
+        className={styles.removeButton}
         onClick={() => dispatch(removePizzaFromCard(id))}
       >
         <button>

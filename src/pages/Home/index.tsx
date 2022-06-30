@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Categories } from "components/Categories";
@@ -10,15 +10,17 @@ import { Sorting } from "components/Sorting";
 import { fetchPizzas } from "store/pizzas/asyncThunks";
 import { selectorOfPizzaState } from "store/pizzas/selectors";
 
-import s from "./style.module.scss";
+import { IPizza } from "types/interfaces";
 
-const Home = () => {
-  const [isModalActive, setIsModalActive] = useState(false);
-  const [selectedPizza, setSelectedPizza] = useState(null);
+import styles from "./style.module.scss";
+
+const Home: FC = () => {
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
+  const [selectedPizza, setSelectedPizza] = useState<IPizza | null>(null);
 
   const { pizzas, loading } = useSelector(selectorOfPizzaState);
 
-  const pizzasCards = pizzas.map((pizza) => (
+  const pizzasCards = pizzas.map((pizza: IPizza) => (
     <PizzaCard
       pizza={pizza}
       key={pizza.id}
@@ -31,22 +33,22 @@ const Home = () => {
     <PizzaCardSkeleton key={index} />
   ));
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
 
   useEffect(() => {
     dispatch(fetchPizzas());
   }, [dispatch]);
 
   return (
-    <div className={s.cardWrapper}>
-      <div className={s.cardWrapper__top}>
+    <div className={styles.cardWrapper}>
+      <div className={styles.cardWrapper__top}>
         <Categories />
         <Sorting />
       </div>
 
-      <h2 className={s.cardWrapper__title}>Все пиццы</h2>
+      <h2 className={styles.cardWrapper__title}>Все пиццы</h2>
 
-      <div className={s.cardWrapper__items}>
+      <div className={styles.cardWrapper__items}>
         {loading ? pizzasCardsSkeletons : pizzasCards}
       </div>
 

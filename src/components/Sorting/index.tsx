@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectorOfFiltersState } from "store/filters/selectors";
@@ -6,9 +6,13 @@ import { updateSorting } from "store/filters/slice";
 
 import { sortingPizzas } from "store/pizzas/slice";
 
-import s from "./style.module.scss";
+import styles from "./style.module.scss";
 
-const typesOfSorting = [
+type TSorting = {
+  name: string;
+};
+
+const typesOfSorting: TSorting[] = [
   { name: "популярности ↓" },
   { name: "популярности ↑" },
   { name: "цена по возростанию" },
@@ -17,13 +21,13 @@ const typesOfSorting = [
   { name: "алфавиту от Я до А" },
 ];
 
-const Sorting = () => {
+const Sorting: FC = () => {
   const dispatch = useDispatch();
   const { sorting } = useSelector(selectorOfFiltersState);
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const onSelectSorting = (event) => {
+  const onSelectSorting = (event: any) => {
     const typeOfSorting = event.target.innerText;
 
     dispatch(updateSorting(typeOfSorting));
@@ -33,14 +37,14 @@ const Sorting = () => {
   };
 
   return (
-    <div className={s.sorting}>
-      <div className={s.sorting__label}>
+    <div className={styles.sorting}>
+      <div className={styles.sorting__label}>
         <b>Сортировка по:</b>
         <span onClick={() => setShowPopup(!showPopup)}>{sorting}</span>
       </div>
 
       {showPopup && (
-        <div className={s.sorting__popup}>
+        <div className={styles.sorting__popup}>
           <ul>
             {typesOfSorting.map(({ name }) => (
               <li onClick={onSelectSorting} key={name}>
