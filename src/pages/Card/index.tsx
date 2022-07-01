@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,6 +21,12 @@ const Card: FC = () => {
   const { card, count, totalPrice } = useSelector(selectorOfCardState);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onCheckoutOrder = () => {
+    dispatch(clearCard());
+    navigate("/PizzaApp/checkout");
+  };
 
   if (!card.length) {
     return (
@@ -64,9 +70,9 @@ const Card: FC = () => {
             <span>Вернуться назад</span>
           </Link>
 
-          <Link to="/PizzaApp/" className={styles.buttonCheckout}>
-            <span>Оплатить сейчас</span>
-          </Link>
+          <span className={styles.buttonCheckout} onClick={onCheckoutOrder}>
+            Оформить заказ
+          </span>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ const pizzaSlice = createSlice({
   name: "pizza",
   initialState,
   reducers: {
-    filteringPizzas(state, action) {
+    filteringPizzas(state, action: PayloadAction<string>) {
       if (action.payload === "Все") {
         state.pizzas = state.allPizzas;
       }
@@ -44,7 +44,7 @@ const pizzaSlice = createSlice({
         );
       }
     },
-    sortingPizzas(state, action) {
+    sortingPizzas(state, action: PayloadAction<string>) {
       if (action.payload === "популярности ↓") {
         state.pizzas = state.pizzas.sort((a, b) => b.rating - a.rating);
       }

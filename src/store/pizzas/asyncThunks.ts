@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { IPizza } from "types/interfaces";
 
-const fetchPizzas = createAsyncThunk<IPizza[]>(
+export const fetchPizzas = createAsyncThunk<IPizza[]>(
   "pizza/fetchPizzas",
   async (_, { rejectWithValue }) => {
     try {
@@ -14,5 +14,3 @@ const fetchPizzas = createAsyncThunk<IPizza[]>(
     }
   }
 );
-
-export { fetchPizzas };

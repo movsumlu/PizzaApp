@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { ReturnComponent } from "components/ReturnComponent";
-import nonFoundPageImage from "assets/images/nonFoundPage.svg";
+import nonFoundPageImage from "assets/images/nonFoundPageImage.svg";
 
 const NonFoundPage: FC = () => (
   <ReturnComponent

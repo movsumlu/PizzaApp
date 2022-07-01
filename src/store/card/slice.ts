@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { findPizzaByID } from "utils/findPizzaByID";
 import { getCountOfPizzas } from "utils/getCountOfPizzas";
@@ -23,7 +23,7 @@ const cardSlice = createSlice({
   name: "card",
   initialState,
   reducers: {
-    minusPizzaToCard(state, action) {
+    minusPizzaToCard(state, action: PayloadAction<IPizza>) {
       const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
 
       if (foundPizzaByID?.quantity) {
@@ -37,7 +37,7 @@ const cardSlice = createSlice({
       LS.setItem("countFromLS", state.count);
       LS.setItem("totalPriceFromLS", state.totalPrice);
     },
-    addPizzaToCard(state, action) {
+    addPizzaToCard(state, action: PayloadAction<IPizza>) {
       const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
 
       foundPizzaByID
@@ -51,7 +51,7 @@ const cardSlice = createSlice({
       LS.setItem("countFromLS", state.count);
       LS.setItem("totalPriceFromLS", state.totalPrice);
     },
-    removePizzaFromCard(state, action) {
+    removePizzaFromCard(state, action: PayloadAction<number>) {
       state.card = state.card.filter(
         (pizza: IPizza) => pizza.id !== action.payload
       );

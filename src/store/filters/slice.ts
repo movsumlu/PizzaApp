@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IFiltersState {
   filter: string;
@@ -14,10 +14,10 @@ const filtersSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
-    updateFilter(state, action) {
+    updateFilter(state, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
-    updateSorting(state, action) {
+    updateSorting(state, action: PayloadAction<string>) {
       state.sorting = action.payload;
     },
   },
