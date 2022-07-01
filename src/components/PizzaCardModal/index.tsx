@@ -9,7 +9,7 @@ import styles from "./style.module.scss";
 const PizzaCardModal: FC<{
   pizza: IPizza;
   active: boolean;
-  setIsModalActive: any;
+  setIsModalActive: (setActiveModal: boolean) => void;
 }> = ({ pizza, active, setIsModalActive }) => {
   return (
     <div

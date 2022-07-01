@@ -8,8 +8,8 @@ import styles from "./style.module.scss";
 
 const PizzaCard: FC<{
   pizza: IPizza;
-  setIsModalActive: any;
-  setSelectedPizza: any;
+  setIsModalActive: (setActiveModal: boolean) => void;
+  setSelectedPizza: (selectedPizza: IPizza) => void;
 }> = ({ pizza, setIsModalActive, setSelectedPizza }) => {
   const onSelectPizza = () => {
     setIsModalActive(true);

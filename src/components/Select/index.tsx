@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, MouseEvent } from "react";
 
 import { useDispatch } from "react-redux";
 import { addPizzaToCard } from "store/card/slice";
@@ -20,11 +20,15 @@ const Select: FC<{ pizza: IPizza }> = ({ pizza }) => {
 
   const [selectedSize, setSelectedSize] = useState<number>(pizza.sizes[0]);
 
-  const onSelectDough = (event: any) =>
-    setSelectedDough(event.target.innerText);
+  const onSelectDough = (event: MouseEvent) => {
+    const selectedLIElement = event.target as HTMLElement;
+    setSelectedDough(selectedLIElement.innerText);
+  };
 
-  const onSelectSize = (event: any) =>
-    setSelectedSize(parseInt(event.target.innerText));
+  const onSelectSize = (event: MouseEvent) => {
+    const selectedLIElement = event.target as HTMLElement;
+    setSelectedSize(parseInt(selectedLIElement.innerText));
+  };
 
   return (
     <>

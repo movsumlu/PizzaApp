@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateFilter } from "store/filters/slice";
@@ -33,11 +33,12 @@ const Categories: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { filter } = useSelector(selectorOfFiltersState);
 
-  const onSelectFilter = (event: any) => {
-    const typeOfSorting = event.target.innerText;
+  const onSelectFilter = (event: MouseEvent) => {
+    const selectedLIElement = event.target as HTMLElement;
+    const typeOfFilter = selectedLIElement.innerText;
 
-    dispatch(updateFilter(typeOfSorting));
-    dispatch(filteringPizzas(typeOfSorting));
+    dispatch(updateFilter(typeOfFilter));
+    dispatch(filteringPizzas(typeOfFilter));
   };
 
   return (

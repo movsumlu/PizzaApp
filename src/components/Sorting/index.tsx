@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, MouseEvent } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -28,8 +28,9 @@ const Sorting: FC = () => {
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const onSelectSorting = (event: any) => {
-    const typeOfSorting = event.target.innerText;
+  const onSelectSorting = (event: MouseEvent) => {
+    const selectedLIElement = event.target as HTMLElement;
+    const typeOfSorting = selectedLIElement.innerText;
 
     dispatch(updateSorting(typeOfSorting));
     dispatch(sortingPizzas(typeOfSorting));
