@@ -8,7 +8,9 @@ import { PizzaCardSkeleton } from "components/PizzaCardSkeleton";
 import { Sorting } from "components/Sorting";
 
 import { fetchPizzas } from "store/pizzas/asyncThunks";
+
 import { selectorOfPizzaState } from "store/pizzas/selectors";
+import { selectorOfFiltersState } from "store/filters/selectors";
 
 import { IPizza } from "types/interfaces";
 
@@ -19,6 +21,7 @@ const Home: FC = () => {
   const [selectedPizza, setSelectedPizza] = useState<IPizza | null>(null);
 
   const { pizzas, loading } = useSelector(selectorOfPizzaState);
+  const { filter } = useSelector(selectorOfFiltersState);
 
   const pizzasCards = pizzas.map((pizza: IPizza) => (
     <PizzaCard
@@ -46,7 +49,7 @@ const Home: FC = () => {
         <Sorting />
       </div>
 
-      <h2 className={styles.cardWrapper__title}>Все пиццы</h2>
+      <h2 className={styles.cardWrapper__title}>{filter} пиццы</h2>
 
       <div className={styles.cardWrapper__items}>
         {loading ? pizzasCardsSkeletons : pizzasCards}

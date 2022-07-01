@@ -22,56 +22,50 @@ const pizzaSlice = createSlice({
   initialState,
   reducers: {
     filteringPizzas(state, action: PayloadAction<string>) {
-      if (action.payload === "Все") {
-        state.pizzas = state.allPizzas;
-      }
+      state.pizzas = state.allPizzas.filter((pizza) => {
+        if (action.payload === "Все") {
+          return pizza;
+        }
 
-      if (action.payload === "Мясные") {
-        state.pizzas = state.allPizzas.filter((pizza) =>
-          pizza.category.includes(1)
-        );
-      }
+        if (action.payload === "Мясные") {
+          return pizza.category.includes(1);
+        }
 
-      if (action.payload === "Вегетарианские 🌱") {
-        state.pizzas = state.allPizzas.filter((pizza) =>
-          pizza.category.includes(2)
-        );
-      }
+        if (action.payload === "Вегетарианские 🌱") {
+          return pizza.category.includes(2);
+        }
 
-      if (action.payload === "Острые 🌶️") {
-        state.pizzas = state.allPizzas.filter((pizza) =>
-          pizza.category.includes(3)
-        );
-      }
+        if (action.payload === "Острые 🌶️") {
+          return pizza.category.includes(3);
+        }
+      });
     },
     sortingPizzas(state, action: PayloadAction<string>) {
-      if (action.payload === "популярности ↓") {
-        state.pizzas = state.pizzas.sort((a, b) => b.rating - a.rating);
-      }
+      state.pizzas = state.pizzas.sort((a: any, b: IPizza) => {
+        if (action.payload === "популярности ↓") {
+          return b.rating - a.rating;
+        }
 
-      if (action.payload === "популярности ↑") {
-        state.pizzas = state.pizzas.sort((a, b) => a.rating - b.rating);
-      }
+        if (action.payload === "популярности ↑") {
+          return a.rating - b.rating;
+        }
 
-      if (action.payload === "цена по возростанию") {
-        state.pizzas = state.pizzas.sort((a, b) => a.price - b.price);
-      }
+        if (action.payload === "цена по возрастанию") {
+          return a.price - b.price;
+        }
 
-      if (action.payload === "цене по убыванию") {
-        state.pizzas = state.pizzas.sort((a, b) => b.price - a.price);
-      }
+        if (action.payload === "цене по убыванию") {
+          return b.price - a.price;
+        }
 
-      if (action.payload === "алфавиту от А до Я") {
-        state.pizzas = state.pizzas.sort((a, b) =>
-          b.title.localeCompare(a.title)
-        );
-      }
+        if (action.payload === "алфавиту от А до Я") {
+          return a.title.localeCompare(b.title);
+        }
 
-      if (action.payload === "алфавиту от Я до А") {
-        state.pizzas = state.pizzas.sort((a, b) =>
-          a.title.localeCompare(b.title)
-        );
-      }
+        if (action.payload === "алфавиту от Я до А") {
+          return b.title.localeCompare(a.title);
+        }
+      });
     },
   },
   extraReducers: (builder) => {
