@@ -2,9 +2,10 @@ import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateFilter } from "store/filters/slice";
-import { selectorOfFiltersState } from "store/filters/selectors";
-
 import { filteringPizzas } from "store/pizzas/slice";
+
+import { selectorOfFiltersState } from "store/filters/selectors";
+import { AppDispatch } from "store";
 
 import styles from "./style.module.scss";
 
@@ -29,7 +30,7 @@ const categories: TCategory[] = [
 ];
 
 const Categories: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { filter } = useSelector(selectorOfFiltersState);
 
   const onSelectFilter = (event: any) => {

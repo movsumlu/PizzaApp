@@ -7,6 +7,7 @@ import { PizzaCardModal } from "components/PizzaCardModal";
 import { PizzaCardSkeleton } from "components/PizzaCardSkeleton";
 import { Sorting } from "components/Sorting";
 
+import { AppDispatch } from "store";
 import { fetchPizzas } from "store/pizzas/asyncThunks";
 
 import { selectorOfPizzaState } from "store/pizzas/selectors";
@@ -36,7 +37,7 @@ const Home: FC = () => {
     <PizzaCardSkeleton key={index} />
   ));
 
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchPizzas());

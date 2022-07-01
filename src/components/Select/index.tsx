@@ -3,6 +3,8 @@ import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPizzaToCard } from "store/card/slice";
 
+import { AppDispatch } from "store";
+
 import { GlobalSvgSelector } from "components/GlobalSvgSelector";
 
 import { IPizza } from "types/interfaces";
@@ -10,7 +12,7 @@ import { IPizza } from "types/interfaces";
 import styles from "./style.module.scss";
 
 const Select: FC<{ pizza: IPizza }> = ({ pizza }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [selectedDough, setSelectedDough] = useState<string>(
     pizza.doughes[0].name

@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+
+import { AppDispatch } from "store";
 import { selectorOfFiltersState } from "store/filters/selectors";
 import { updateSorting } from "store/filters/slice";
-
 import { sortingPizzas } from "store/pizzas/slice";
 
 import styles from "./style.module.scss";
@@ -22,7 +23,7 @@ const typesOfSorting: TSorting[] = [
 ];
 
 const Sorting: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { sorting } = useSelector(selectorOfFiltersState);
 
   const [showPopup, setShowPopup] = useState(false);

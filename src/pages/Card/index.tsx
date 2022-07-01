@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import { AppDispatch } from "store";
 import { selectorOfCardState } from "store/card/selectors";
 import { clearCard } from "store/card/slice";
 
@@ -20,7 +21,7 @@ import styles from "./style.module.scss";
 const Card: FC = () => {
   const { card, count, totalPrice } = useSelector(selectorOfCardState);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const onCheckoutOrder = () => {

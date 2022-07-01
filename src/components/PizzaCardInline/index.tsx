@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { IPizza } from "types/interfaces";
 
+import { AppDispatch } from "store";
 import { useDispatch } from "react-redux";
 
 import {
@@ -14,7 +15,7 @@ import { GlobalSvgSelector } from "components/GlobalSvgSelector";
 import styles from "./style.module.scss";
 
 const PizzaCardInline: FC<{ pizza: IPizza }> = ({ pizza }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { id, title, price, quantity } = pizza;
 

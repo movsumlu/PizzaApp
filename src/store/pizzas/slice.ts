@@ -21,12 +21,8 @@ const pizzaSlice = createSlice({
   name: "pizza",
   initialState,
   reducers: {
-    filteringPizzas(state, action: PayloadAction<string>) {
-      state.pizzas = state.allPizzas.filter((pizza) => {
-        if (action.payload === "Все") {
-          return pizza;
-        }
-
+    filteringPizzas(state: IPizzasState, action: PayloadAction<string>) {
+      state.pizzas = state.allPizzas.filter((pizza: IPizza) => {
         if (action.payload === "Мясные") {
           return pizza.category.includes(1);
         }
@@ -38,10 +34,12 @@ const pizzaSlice = createSlice({
         if (action.payload === "Острые 🌶️") {
           return pizza.category.includes(3);
         }
+
+        return pizza;
       });
     },
-    sortingPizzas(state, action: PayloadAction<string>) {
-      state.pizzas = state.pizzas.sort((a: any, b: IPizza) => {
+    sortingPizzas(state: IPizzasState, action: PayloadAction<string>) {
+      state.pizzas = state.pizzas.sort((a: IPizza, b: IPizza) => {
         if (action.payload === "популярности ↓") {
           return b.rating - a.rating;
         }
@@ -62,27 +60,25 @@ const pizzaSlice = createSlice({
           return a.title.localeCompare(b.title);
         }
 
-        if (action.payload === "алфавиту от Я до А") {
-          return b.title.localeCompare(a.title);
-        }
+        return b.title.localeCompare(a.title);
       });
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchPizzas.pending, (state) => {
+    builder.addCase(fetchPizzas.pending, (state: IPizzasState) => {
       state.loading = true;
     });
 
     builder.addCase(
       fetchPizzas.fulfilled,
-      (state, action: PayloadAction<IPizza[]>) => {
+      (state: IPizzasState, action: PayloadAction<IPizza[]>) => {
         state.pizzas = action.payload;
         state.allPizzas = action.payload;
         state.loading = false;
       }
     );
 
-    builder.addCase(fetchPizzas.rejected, (state, action) => {
+    builder.addCase(fetchPizzas.rejected, (state: IPizzasState, action) => {
       state.errors = action.payload;
       state.loading = false;
     });

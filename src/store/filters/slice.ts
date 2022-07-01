@@ -14,10 +14,10 @@ const filtersSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
-    updateFilter(state, action: PayloadAction<string>) {
+    updateFilter(state: IFiltersState, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
-    updateSorting(state, action: PayloadAction<string>) {
+    updateSorting(state: IFiltersState, action: PayloadAction<string>) {
       state.sorting = action.payload;
     },
   },

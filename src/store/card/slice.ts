@@ -23,7 +23,7 @@ const cardSlice = createSlice({
   name: "card",
   initialState,
   reducers: {
-    minusPizzaToCard(state, action: PayloadAction<IPizza>) {
+    minusPizzaToCard(state: ICardState, action: PayloadAction<IPizza>) {
       const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
 
       if (foundPizzaByID?.quantity) {
@@ -37,7 +37,7 @@ const cardSlice = createSlice({
       LS.setItem("countFromLS", state.count);
       LS.setItem("totalPriceFromLS", state.totalPrice);
     },
-    addPizzaToCard(state, action: PayloadAction<IPizza>) {
+    addPizzaToCard(state: ICardState, action: PayloadAction<IPizza>) {
       const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
 
       foundPizzaByID
@@ -51,7 +51,7 @@ const cardSlice = createSlice({
       LS.setItem("countFromLS", state.count);
       LS.setItem("totalPriceFromLS", state.totalPrice);
     },
-    removePizzaFromCard(state, action: PayloadAction<number>) {
+    removePizzaFromCard(state: ICardState, action: PayloadAction<number>) {
       state.card = state.card.filter(
         (pizza: IPizza) => pizza.id !== action.payload
       );
@@ -62,7 +62,7 @@ const cardSlice = createSlice({
       LS.setItem("countFromLS", state.count);
       LS.setItem("totalPriceFromLS", state.totalPrice);
     },
-    clearCard(state) {
+    clearCard(state: ICardState) {
       state.card = [];
       state.count = 0;
       state.totalPrice = 0;
