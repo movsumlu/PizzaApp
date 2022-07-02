@@ -1,4 +1,6 @@
-export const GlobalSvgSelector = ({ type }) => {
+import { FC } from "react";
+
+const GlobalSvgSelector: FC<{ type: string }> = ({ type }) => {
   switch (type) {
     case "basket-icon":
       return (
@@ -165,3 +167,5 @@ export const GlobalSvgSelector = ({ type }) => {
       return null;
   }
 };
+
+export { GlobalSvgSelector };
