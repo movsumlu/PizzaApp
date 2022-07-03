@@ -1,16 +1,28 @@
 {
   "files": {
-    "main.css": "/PizzaApp/static/css/main.033dd9b4.css",
-    "main.js": "/PizzaApp/static/js/main.c69f76a3.js",
+    "main.css": "/PizzaApp/static/css/main.7aff06ff.css",
+    "main.js": "/PizzaApp/static/js/main.73df5559.js",
+    "static/css/60.102bf613.chunk.css": "/PizzaApp/static/css/60.102bf613.chunk.css",
+    "static/js/60.e204a2c7.chunk.js": "/PizzaApp/static/js/60.e204a2c7.chunk.js",
+    "static/css/745.c2cf94cd.chunk.css": "/PizzaApp/static/css/745.c2cf94cd.chunk.css",
+    "static/js/745.2db90223.chunk.js": "/PizzaApp/static/js/745.2db90223.chunk.js",
+    "static/css/367.c2cf94cd.chunk.css": "/PizzaApp/static/css/367.c2cf94cd.chunk.css",
+    "static/js/367.65e76d60.chunk.js": "/PizzaApp/static/js/367.65e76d60.chunk.js",
     "static/media/emptyCart.svg": "/PizzaApp/static/media/emptyCart.5aa5dac99a832c62f3ef0fe79ac96d2d.svg",
     "static/media/nonFoundPageImage.svg": "/PizzaApp/static/media/nonFoundPageImage.682d6cf7bfa4a291dd068f138b5be91f.svg",
     "static/media/pizzaLogo.svg": "/PizzaApp/static/media/pizzaLogo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/PizzaApp/index.html",
-    "main.033dd9b4.css.map": "/PizzaApp/static/css/main.033dd9b4.css.map",
-    "main.c69f76a3.js.map": "/PizzaApp/static/js/main.c69f76a3.js.map"
+    "main.7aff06ff.css.map": "/PizzaApp/static/css/main.7aff06ff.css.map",
+    "main.73df5559.js.map": "/PizzaApp/static/js/main.73df5559.js.map",
+    "60.102bf613.chunk.css.map": "/PizzaApp/static/css/60.102bf613.chunk.css.map",
+    "60.e204a2c7.chunk.js.map": "/PizzaApp/static/js/60.e204a2c7.chunk.js.map",
+    "745.c2cf94cd.chunk.css.map": "/PizzaApp/static/css/745.c2cf94cd.chunk.css.map",
+    "745.2db90223.chunk.js.map": "/PizzaApp/static/js/745.2db90223.chunk.js.map",
+    "367.c2cf94cd.chunk.css.map": "/PizzaApp/static/css/367.c2cf94cd.chunk.css.map",
+    "367.65e76d60.chunk.js.map": "/PizzaApp/static/js/367.65e76d60.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.033dd9b4.css",
-    "static/js/main.c69f76a3.js"
+    "static/css/main.7aff06ff.css",
+    "static/js/main.73df5559.js"
   ]
 }
