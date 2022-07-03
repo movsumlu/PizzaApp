@@ -1,26 +1,15 @@
-import { FC, useState, MouseEvent } from "react";
+import { FC, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { AppDispatch } from "store";
 import { selectorOfFiltersState } from "store/filters/selectors";
 import { updateSorting } from "store/filters/slice";
 import { sortingPizzas } from "store/pizzas/slice";
 
+import { AppDispatch } from "store";
+import { typesOfSorting } from "types/typesOfSorting";
+
 import styles from "./style.module.scss";
-
-type TSorting = {
-  name: string;
-};
-
-const typesOfSorting: TSorting[] = [
-  { name: "популярности ↓" },
-  { name: "популярности ↑" },
-  { name: "цена по возрастанию" },
-  { name: "цене по убыванию" },
-  { name: "алфавиту от А до Я" },
-  { name: "алфавиту от Я до А" },
-];
 
 const Sorting: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -28,12 +17,9 @@ const Sorting: FC = () => {
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const onSelectSorting = (event: MouseEvent) => {
-    const selectedLIElement = event.target as HTMLElement;
-    const typeOfSorting = selectedLIElement.innerText;
-
-    dispatch(updateSorting(typeOfSorting));
-    dispatch(sortingPizzas(typeOfSorting));
+  const onSelectSorting = (type: string, label: string) => {
+    dispatch(updateSorting(label));
+    dispatch(sortingPizzas(type));
 
     setShowPopup(false);
   };
@@ -48,9 +34,9 @@ const Sorting: FC = () => {
       {showPopup && (
         <div className={styles.sorting__popup}>
           <ul>
-            {typesOfSorting.map(({ name }) => (
-              <li onClick={onSelectSorting} key={name}>
-                {name}
+            {typesOfSorting.map(({ type, label }) => (
+              <li onClick={() => onSelectSorting(type, label)} key={type}>
+                {label}
               </li>
             ))}
           </ul>

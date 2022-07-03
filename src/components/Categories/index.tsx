@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from "react";
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateFilter } from "store/filters/slice";
@@ -7,50 +7,29 @@ import { filteringPizzas } from "store/pizzas/slice";
 import { selectorOfFiltersState } from "store/filters/selectors";
 import { AppDispatch } from "store";
 
+import { typesOfFilter } from "types/typesOfFilter";
+
 import styles from "./style.module.scss";
-
-type TCategory = {
-  name: string;
-};
-
-const categories: TCategory[] = [
-  {
-    name: "Все",
-  },
-  {
-    name: "Мясные",
-  },
-  {
-    name: "Вегетарианские 🌱",
-  },
-
-  {
-    name: "Острые 🌶️",
-  },
-];
 
 const Categories: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { filter } = useSelector(selectorOfFiltersState);
 
-  const onSelectFilter = (event: MouseEvent) => {
-    const selectedLIElement = event.target as HTMLElement;
-    const typeOfFilter = selectedLIElement.innerText;
-
-    dispatch(updateFilter(typeOfFilter));
-    dispatch(filteringPizzas(typeOfFilter));
+  const onSelectFilter = (type: string, label: string) => {
+    dispatch(updateFilter(label));
+    dispatch(filteringPizzas(type));
   };
 
   return (
     <div className={styles.categories}>
       <ul>
-        {categories.map(({ name }) => (
+        {typesOfFilter.map(({ type, label }) => (
           <li
-            className={name === filter ? styles.active : ""}
-            key={name}
-            onClick={onSelectFilter}
+            className={label === filter ? styles.active : ""}
+            key={label}
+            onClick={() => onSelectFilter(type, label)}
           >
-            {name}
+            {label}
           </li>
         ))}
       </ul>

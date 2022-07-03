@@ -23,15 +23,15 @@ const pizzaSlice = createSlice({
   reducers: {
     filteringPizzas(state: IPizzasState, action: PayloadAction<string>) {
       state.pizzas = state.allPizzas.filter((pizza: IPizza) => {
-        if (action.payload === "Мясные") {
+        if (action.payload === "meaty") {
           return pizza.category.includes(1);
         }
 
-        if (action.payload === "Вегетарианские 🌱") {
+        if (action.payload === "vegan") {
           return pizza.category.includes(2);
         }
 
-        if (action.payload === "Острые 🌶️") {
+        if (action.payload === "spicy") {
           return pizza.category.includes(3);
         }
 
@@ -40,23 +40,23 @@ const pizzaSlice = createSlice({
     },
     sortingPizzas(state: IPizzasState, action: PayloadAction<string>) {
       state.pizzas = state.pizzas.sort((a: IPizza, b: IPizza) => {
-        if (action.payload === "популярности ↓") {
+        if (action.payload === "popularity_up") {
           return b.rating - a.rating;
         }
 
-        if (action.payload === "популярности ↑") {
+        if (action.payload === "popularity_down") {
           return a.rating - b.rating;
         }
 
-        if (action.payload === "цена по возрастанию") {
+        if (action.payload === "price_up") {
           return a.price - b.price;
         }
 
-        if (action.payload === "цене по убыванию") {
+        if (action.payload === "price_down") {
           return b.price - a.price;
         }
 
-        if (action.payload === "алфавиту от А до Я") {
+        if (action.payload === "alphabetically_up") {
           return a.title.localeCompare(b.title);
         }
 

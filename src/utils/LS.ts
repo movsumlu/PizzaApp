@@ -1,5 +1,5 @@
 export const LS = {
-  setItem: (name: string, item: any) => {
+  setItem: (name: string, item: object | number) => {
     localStorage.setItem(name, JSON.stringify(item));
   },
   getItem: (name: string) => {
