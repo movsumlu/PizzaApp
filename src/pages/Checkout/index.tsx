@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { ReturnComponent } from "components/ReturnComponent";
+import ReturnComponent from "components/ReturnComponent";
 import checkoutImage from "assets/images/checkoutImage.gif";
 
 const Checkout: FC = () => (
@@ -11,4 +11,4 @@ const Checkout: FC = () => (
   />
 );
 
-export { Checkout };
+export default Checkout;

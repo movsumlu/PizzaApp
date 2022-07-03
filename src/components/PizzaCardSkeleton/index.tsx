@@ -18,4 +18,4 @@ const PizzaCardSkeleton: FC = () => (
   </ContentLoader>
 );
 
-export { PizzaCardSkeleton };
+export default PizzaCardSkeleton;

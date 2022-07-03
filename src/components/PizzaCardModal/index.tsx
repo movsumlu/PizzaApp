@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Select } from "components/Select";
+import Select from "components/Select";
 
 import { IPizza } from "types/interfaces";
 
@@ -45,4 +45,4 @@ const PizzaCardModal: FC<{
   );
 };
 
-export { PizzaCardModal };
+export default PizzaCardModal;

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectorOfCardState } from "store/card/selectors";
 
-import { GlobalSvgSelector } from "components/GlobalSvgSelector";
+import GlobalSvgSelector from "components/GlobalSvgSelector";
 
 import pizzaLogo from "assets/images/pizzaLogo.svg";
 import styles from "./style.module.scss";
@@ -49,4 +49,4 @@ const Header: FC = () => {
   );
 };
 
-export { Header };
+export default Header;

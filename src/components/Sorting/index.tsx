@@ -60,4 +60,4 @@ const Sorting: FC = () => {
   );
 };
 
-export { Sorting };
+export default Sorting;

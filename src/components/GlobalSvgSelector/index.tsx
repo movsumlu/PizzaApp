@@ -168,4 +168,4 @@ const GlobalSvgSelector: FC<{ type: string }> = ({ type }) => {
   }
 };
 
-export { GlobalSvgSelector };
+export default GlobalSvgSelector;

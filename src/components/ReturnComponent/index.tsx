@@ -18,4 +18,4 @@ const ReturnComponent: FC<{
   </div>
 );
 
-export { ReturnComponent };
+export default ReturnComponent;

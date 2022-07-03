@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { ReturnComponent } from "components/ReturnComponent";
+import ReturnComponent from "components/ReturnComponent";
 import nonFoundPageImage from "assets/images/nonFoundPageImage.svg";
 
 const NonFoundPage: FC = () => (
@@ -11,4 +11,4 @@ const NonFoundPage: FC = () => (
   />
 );
 
-export { NonFoundPage };
+export default NonFoundPage;

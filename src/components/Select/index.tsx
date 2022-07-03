@@ -5,7 +5,7 @@ import { addPizzaToCard } from "store/card/slice";
 
 import { AppDispatch } from "store";
 
-import { GlobalSvgSelector } from "components/GlobalSvgSelector";
+import GlobalSvgSelector from "components/GlobalSvgSelector";
 
 import { IPizza } from "types/interfaces";
 
@@ -70,4 +70,4 @@ const Select: FC<{ pizza: IPizza }> = ({ pizza }) => {
   );
 };
 
-export { Select };
+export default Select;

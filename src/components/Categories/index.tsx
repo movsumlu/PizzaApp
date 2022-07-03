@@ -58,4 +58,4 @@ const Categories: FC = () => {
   );
 };
 
-export { Categories };
+export default Categories;

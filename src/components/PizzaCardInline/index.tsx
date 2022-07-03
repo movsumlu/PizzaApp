@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { IPizza } from "types/interfaces";
 
 import { AppDispatch } from "store";
@@ -10,7 +11,7 @@ import {
   removePizzaFromCard,
 } from "store/card/slice";
 
-import { GlobalSvgSelector } from "components/GlobalSvgSelector";
+import GlobalSvgSelector from "components/GlobalSvgSelector";
 
 import styles from "./style.module.scss";
 
@@ -59,4 +60,4 @@ const PizzaCardInline: FC<{ pizza: IPizza }> = ({ pizza }) => {
   );
 };
 
-export { PizzaCardInline };
+export default PizzaCardInline;

@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Select } from "components/Select";
+import Select from "components/Select";
 
 import { IPizza } from "types/interfaces";
 
@@ -33,4 +33,4 @@ const PizzaCard: FC<{
   );
 };
 
-export { PizzaCard };
+export default PizzaCard;

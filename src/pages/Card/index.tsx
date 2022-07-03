@@ -8,9 +8,9 @@ import { AppDispatch } from "store";
 import { selectorOfCardState } from "store/card/selectors";
 import { clearCard } from "store/card/slice";
 
-import { ReturnComponent } from "components/ReturnComponent";
-import { PizzaCardInline } from "components/PizzaCardInline";
-import { GlobalSvgSelector } from "components/GlobalSvgSelector";
+import ReturnComponent from "components/ReturnComponent";
+import PizzaCardInline from "components/PizzaCardInline";
+import GlobalSvgSelector from "components/GlobalSvgSelector";
 
 import { IPizza } from "types/interfaces";
 
@@ -80,4 +80,4 @@ const Card: FC = () => {
   );
 };
 
-export { Card };
+export default Card;
