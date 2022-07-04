@@ -1,4 +1,5 @@
 import { API } from "API";
+import { AxiosError } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { IPizza } from "types/interfaces";
@@ -10,7 +11,8 @@ export const fetchPizzas = createAsyncThunk<IPizza[]>(
       const { data } = await API.get("/");
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      const responseError = error as Error | AxiosError;
+      return rejectWithValue(responseError.message);
     }
   }
 );

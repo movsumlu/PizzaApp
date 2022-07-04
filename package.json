@@ -20,13 +20,15 @@
   },
   "scripts": {
     "dev": "react-scripts start",
+    "cypress": "cypress open",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {
@@ -40,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^8.0.0",
+    "eslint-plugin-cypress": "^2.11.3"
   }
 }
