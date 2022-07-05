@@ -19,6 +19,16 @@ const initialState: ICardState = {
   totalPrice: LS.getItem("totalPriceFromLS") || 0,
 };
 
+const savePizzaDatainLS = (
+  card: IPizza[],
+  count: number,
+  totalPrice: number
+) => {
+  LS.setItem("cardFromLS", card);
+  LS.setItem("countFromLS", count);
+  LS.setItem("totalPriceFromLS", totalPrice);
+};
+
 const cardSlice = createSlice({
   name: "card",
   initialState,
@@ -33,9 +43,7 @@ const cardSlice = createSlice({
       state.count = getCountOfPizzas(state.card);
       state.totalPrice = getTotalPrice(state.card);
 
-      LS.setItem("cardFromLS", state.card);
-      LS.setItem("countFromLS", state.count);
-      LS.setItem("totalPriceFromLS", state.totalPrice);
+      savePizzaDatainLS(state.card, state.count, state.totalPrice);
     },
     addPizzaToCard(state: ICardState, action: PayloadAction<IPizza>) {
       const foundPizzaByID = findPizzaByID(state.card, action.payload.id);
@@ -47,9 +55,7 @@ const cardSlice = createSlice({
       state.count = getCountOfPizzas(state.card);
       state.totalPrice = getTotalPrice(state.card);
 
-      LS.setItem("cardFromLS", state.card);
-      LS.setItem("countFromLS", state.count);
-      LS.setItem("totalPriceFromLS", state.totalPrice);
+      savePizzaDatainLS(state.card, state.count, state.totalPrice);
     },
     removePizzaFromCard(state: ICardState, action: PayloadAction<number>) {
       state.card = state.card.filter(
@@ -58,18 +64,14 @@ const cardSlice = createSlice({
       state.count = getCountOfPizzas(state.card);
       state.totalPrice = getTotalPrice(state.card);
 
-      LS.setItem("cardFromLS", state.card);
-      LS.setItem("countFromLS", state.count);
-      LS.setItem("totalPriceFromLS", state.totalPrice);
+      savePizzaDatainLS(state.card, state.count, state.totalPrice);
     },
     clearCard(state: ICardState) {
       state.card = [];
       state.count = 0;
       state.totalPrice = 0;
 
-      LS.setItem("cardFromLS", state.card);
-      LS.setItem("countFromLS", state.count);
-      LS.setItem("totalPriceFromLS", state.totalPrice);
+      savePizzaDatainLS(state.card, state.count, state.totalPrice);
     },
   },
 });
