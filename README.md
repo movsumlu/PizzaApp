@@ -12,6 +12,12 @@ compiles and hot-reloads for development
 npm run dev
 ```
 
+run E2E tests
+
+```bash
+npm run cypress
+```
+
 compiles and minifies for production
 
 ```bash

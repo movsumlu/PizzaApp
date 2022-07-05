@@ -4,7 +4,7 @@ describe("testing <Home /> page", () => {
     cy.get(".style_cardWrapper__N6l-I").should("be.visible");
   });
 
-  it("correct text of title and subtitle", () => {
+  it("correct text of title and subtitle of <Header />", () => {
     cy.get(".style_header__title__qB-3J").should("have.text", "Pizza App");
     cy.get(".style_header__subtitle__4pMdl").should(
       "have.text",
@@ -17,9 +17,8 @@ describe("testing <Home /> page", () => {
     cy.get(".style_sorting__popup__PLAcr").should("be.visible");
   });
 
-  it("go to checkout page by clicking of header button", () => {
+  it("go to checkout page by clicking of header checkout button", () => {
     cy.get(".style_header__buttonWrapper__haGNu").click();
-    cy.url().should("include", "/card");
     cy.url().should("eq", "http://localhost:3000/PizzaApp/card");
   });
 });
