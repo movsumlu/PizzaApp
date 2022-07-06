@@ -21,14 +21,11 @@ body {
   .app {
     padding-top: 20px;
     margin: 0 auto;
-
-    .wrapper {
-      width: calc(100vw - 100px);
-      height: 100%;
-      background-color: $white-color;
-      margin: 50px auto;
-      border-radius: 10px;
-      max-width: 1400px;
-    }
+    width: calc(100vw - 100px);
+    height: 100%;
+    background-color: $white-color;
+    margin: 50px auto;
+    border-radius: 10px;
+    max-width: 1400px;
   }
 }
