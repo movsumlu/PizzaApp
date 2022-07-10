@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent } from "react";
+import { FC, useState, useMemo } from "react";
 
 import { useDispatch } from "react-redux";
 import { addPizzaToCard } from "store/card/slice";
@@ -7,57 +7,58 @@ import { AppDispatch } from "store";
 
 import GlobalSvgSelector from "components/GlobalSvgSelector";
 
-import { IPizza } from "types/interfaces";
+import { IDough, ISize, IPizza } from "types/interfaces";
 
 import styles from "./style.module.scss";
 
 const Select: FC<{ pizza: IPizza }> = ({ pizza }) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [selectedDough, setSelectedDough] = useState<string>(
-    pizza.doughes[0].name
+  const [selectedDough, setSelectedDough] = useState<IDough>(pizza.doughes[0]);
+  const [selectedSize, setSelectedSize] = useState<ISize>(pizza.sizes[0]);
+
+  const totalPriceOfPizza = useMemo(
+    () =>
+      (
+        pizza.price *
+        selectedDough.coeficient *
+        selectedSize.coeficient
+      ).toFixed(),
+    [pizza, selectedDough, selectedSize]
   );
-
-  const [selectedSize, setSelectedSize] = useState<number>(pizza.sizes[0]);
-
-  const onSelectDough = (event: MouseEvent) => {
-    const selectedLIElement = event.target as HTMLElement;
-    setSelectedDough(selectedLIElement.innerText);
-  };
-
-  const onSelectSize = (event: MouseEvent) => {
-    const selectedLIElement = event.target as HTMLElement;
-    setSelectedSize(parseInt(selectedLIElement.innerText));
-  };
 
   return (
     <>
       <div className={styles.selectionSide}>
         <ul>
-          {pizza.doughes.map(({ name }) => (
-            <li
-              className={name === selectedDough ? styles.active : ""}
-              key={name}
-              onClick={onSelectDough}
-            >
-              {name}
-            </li>
-          ))}
+          {pizza.doughes.length &&
+            pizza.doughes.map((dough) => (
+              <li
+                className={
+                  dough.name === selectedDough.name ? styles.active : ""
+                }
+                key={dough.name}
+                onClick={() => setSelectedDough(dough)}
+              >
+                {dough.name}
+              </li>
+            ))}
         </ul>
         <ul>
-          {pizza.sizes.map((size) => (
-            <li
-              className={size === selectedSize ? styles.active : ""}
-              key={size}
-              onClick={onSelectSize}
-            >
-              {size}
-            </li>
-          ))}
+          {pizza.sizes.length &&
+            pizza.sizes.map((size) => (
+              <li
+                className={size.name === selectedSize.name ? styles.active : ""}
+                key={size.name}
+                onClick={() => setSelectedSize(size)}
+              >
+                {size.name}
+              </li>
+            ))}
         </ul>
       </div>
       <div className={styles.bottomSide}>
-        <div className={styles.price}>от {pizza.price} ₽</div>
+        <div className={styles.price}>от {totalPriceOfPizza} ₽</div>
         <button
           className={styles.buttonAdd}
           onClick={() => dispatch(addPizzaToCard(pizza))}

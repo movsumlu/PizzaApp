@@ -1,5 +1,11 @@
-interface IDough {
+export interface IDough {
   name: string;
+  coeficient: number;
+}
+
+export interface ISize {
+  name: string;
+  coeficient: number;
 }
 
 export interface IPizza {
@@ -7,7 +13,7 @@ export interface IPizza {
   title: string;
   price: number;
   imageUrl: string;
-  sizes: number[];
+  sizes: ISize[];
   types: number[];
   rating: number;
   composition: string;

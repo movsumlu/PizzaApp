@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "cypress": "cypress open",
+    "run E2E tests": "cypress open",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build"
   },
