@@ -1,13 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { typesOfFilter } from "types/typesOfFilter";
+import { typesOfSorting } from "types/typesOfSorting";
+
 interface IFiltersState {
   filter: string;
   sorting: string;
 }
 
 const initialState: IFiltersState = {
-  filter: "Все",
-  sorting: "популярности ↓",
+  filter: typesOfFilter[0].label,
+  sorting: typesOfSorting[0].label,
 };
 
 const filtersSlice = createSlice({
